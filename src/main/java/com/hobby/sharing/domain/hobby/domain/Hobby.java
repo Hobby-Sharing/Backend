@@ -1,5 +1,6 @@
 package com.hobby.sharing.domain.hobby.domain;
 
+import com.hobby.sharing.domain.model.BaseTime;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Hobby {
+public class Hobby extends BaseTime {
 
     @Id
     @GeneratedValue(generator = "uuid2")

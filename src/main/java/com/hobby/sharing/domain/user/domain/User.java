@@ -1,7 +1,7 @@
 package com.hobby.sharing.domain.user.domain;
 
 import com.hobby.sharing.domain.hobby.domain.LikeHobby;
-import com.hobby.sharing.domain.model.BaseTimeEntity;
+import com.hobby.sharing.domain.model.BaseTime;
 import com.hobby.sharing.domain.profile.domain.Profile;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class User extends BaseTimeEntity {
+public class User extends BaseTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
