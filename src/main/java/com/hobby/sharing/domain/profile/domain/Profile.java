@@ -15,7 +15,7 @@ public class Profile extends BaseTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "VARCHAR(50) default 'no profile image", nullable = false)
+    @Column(length = 50, nullable = false)
     private String profileImageUrl;
 
     @Column(length = 30, nullable = false)
