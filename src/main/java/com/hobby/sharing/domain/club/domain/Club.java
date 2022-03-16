@@ -18,10 +18,13 @@ public class Club extends BaseTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 16, nullable = false)
     private String name;
 
+    @Column(length = 30)
     private String introductionMessage;
 
+    @Column(length = 64, nullable = false)
     private String managerEmail;
 
     @ManyToOne(fetch = FetchType.LAZY)
