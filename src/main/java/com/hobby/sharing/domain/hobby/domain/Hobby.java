@@ -1,5 +1,6 @@
 package com.hobby.sharing.domain.hobby.domain;
 
+import com.hobby.sharing.domain.club.domain.Club;
 import com.hobby.sharing.domain.model.BaseTime;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -25,10 +26,13 @@ public class Hobby extends BaseTime {
     private String name;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 
     @OneToMany(mappedBy = "hobby")
     private List<LikeHobby> likeHobbyList;
+
+    @OneToMany(mappedBy = "hobby")
+    private List<Club> clubList;
 }
