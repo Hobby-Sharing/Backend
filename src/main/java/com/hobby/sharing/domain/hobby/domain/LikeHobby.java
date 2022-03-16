@@ -2,6 +2,7 @@ package com.hobby.sharing.domain.hobby.domain;
 
 import com.hobby.sharing.domain.user.domain.User;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -23,4 +24,10 @@ public class LikeHobby {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hobby_id")
     private Hobby hobby;
+
+    @Builder
+    public LikeHobby(User user, Hobby hobby) {
+        this.user = user;
+        this.hobby = hobby;
+    }
 }
