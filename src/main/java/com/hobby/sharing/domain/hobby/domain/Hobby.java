@@ -3,6 +3,7 @@ package com.hobby.sharing.domain.hobby.domain;
 import com.hobby.sharing.domain.club.domain.Club;
 import com.hobby.sharing.domain.model.BaseTime;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
@@ -29,6 +30,12 @@ public class Hobby extends BaseTime {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @Builder
+    public Hobby(String name, Category category) {
+        this.name = name;
+        this.category = category;
+    }
 
     @OneToMany(mappedBy = "hobby")
     private List<LikeHobby> likeHobbyList;
