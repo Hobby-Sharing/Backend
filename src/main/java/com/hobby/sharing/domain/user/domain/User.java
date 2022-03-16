@@ -33,11 +33,11 @@ public class User extends BaseTime {
     private Address address;
 
     @Builder
-    public User(String email, String password, String name, String address, int zipcode) {
+    public User(String email, String password, String name, String roadNameAddress, int zipcode) {
         this.email = email;
         this.password = password;
         this.name = name;
-        this.address = new Address(address, zipcode);
+        this.address = new Address(roadNameAddress, zipcode);
     }
 
     @OneToMany(mappedBy = "user")
@@ -45,4 +45,5 @@ public class User extends BaseTime {
 
     @OneToMany(mappedBy = "user")
     private List<LikeHobby> likeHobbyList;
+
 }
