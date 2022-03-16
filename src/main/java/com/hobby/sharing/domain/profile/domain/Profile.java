@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Entity @Table(name = "user_profile")
 public class Profile extends BaseTime {
 
     @Id
