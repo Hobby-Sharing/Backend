@@ -1,7 +1,7 @@
 package com.hobby.sharing.global.error.exception;
 
-public interface GlobalException<ResponseType> {
+public interface GlobalException<T> {
 
-    ResponseType errorResponse();
+    T errorResponse();
 
 }
