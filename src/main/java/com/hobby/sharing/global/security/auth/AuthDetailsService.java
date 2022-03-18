@@ -1,0 +1,21 @@
+package com.hobby.sharing.global.security.auth;
+
+import com.hobby.sharing.domain.user.dao.UserRepository;
+import com.hobby.sharing.domain.user.exception.UserNotFoundException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+@RequiredArgsConstructor
+public class AuthDetailsService implements UserDetailsService {
+
+    private final UserRepository userRepository;
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return userRepository.findByEmail(email)
+                .map(AuthDetails::new)
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
+    }
+}
