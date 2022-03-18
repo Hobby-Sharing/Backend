@@ -1,6 +1,5 @@
 package com.hobby.sharing.global.security.auth;
 
-import com.hobby.sharing.domain.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,7 +10,7 @@ import java.util.Collections;
 @RequiredArgsConstructor
 public class AuthDetails implements UserDetails {
 
-    private final User user;
+    private final String email;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -25,7 +24,7 @@ public class AuthDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getEmail();
+        return email;
     }
 
     @Override
