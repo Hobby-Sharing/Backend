@@ -7,8 +7,9 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 @Getter
-public class BusinessErrorResponse {
+public class BasicErrorResponse {
 
+    // jackson 어노테이션을 통해 json 순서 정렬 필요 (이후에 커밋)
     private final ZonedDateTime zonedDateTime;
 
     private final int status;
@@ -17,7 +18,7 @@ public class BusinessErrorResponse {
 
     private final String message;
 
-    public BusinessErrorResponse(ErrorCode errorCode) {
+    public BasicErrorResponse(ErrorCode errorCode) {
         this.zonedDateTime = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
         this.status = errorCode.getStatus();
         this.code = errorCode.getCode();

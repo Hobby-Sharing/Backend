@@ -1,9 +1,9 @@
 package com.hobby.sharing.domain.user.exception;
 
 import com.hobby.sharing.global.error.ErrorCode;
-import com.hobby.sharing.global.error.exception.BusinessException;
+import com.hobby.sharing.global.error.exception.BasicException;
 
-public class UserNotFoundException extends BusinessException {
+public class UserNotFoundException extends BasicException {
 
     public static final UserNotFoundException EXCEPTION = new UserNotFoundException();
 

@@ -1,7 +1,7 @@
 package com.hobby.sharing.global.error;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hobby.sharing.global.error.exception.BusinessException;
+import com.hobby.sharing.global.error.exception.BasicException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -20,7 +20,7 @@ public class ExceptionFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
             filterChain.doFilter(request, response);
-        } catch (BusinessException e) {
+        } catch (BasicException e) {
 
             String jsonErrorResponse = objectMapper.writeValueAsString(e.getErrorResponse());
 
