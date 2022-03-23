@@ -21,14 +21,14 @@ public class Profile extends BaseTime {
     @Column(length = 30, nullable = false)
     private String statusMessage;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @Builder
     public Profile(User user, String profileImageUrl, String statusMessage) {
         this.user = user;
         this.profileImageUrl = profileImageUrl;
         this.statusMessage = statusMessage;
     }
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
 }

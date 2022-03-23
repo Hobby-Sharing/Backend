@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -38,4 +39,8 @@ public class Club extends BaseTime {
         this.managerEmail = managerEmail;
         this.hobby = hobby;
     }
+
+    @OneToMany(mappedBy = "club", cascade = CascadeType.REMOVE)
+    private List<ClubDetail> clubDetailList;
+
 }
