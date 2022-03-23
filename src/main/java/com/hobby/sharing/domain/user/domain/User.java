@@ -13,23 +13,26 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Entity @Table(name = "user")
 public class User extends BaseTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false)
     private Long id;
 
-    @Column(length = 64, nullable = false)
+    @Column(name = "email", length = 64, nullable = false, unique = true)
     private String email;
 
-    @Column(length = 60, nullable = false)
+    @Column(name = "password", length = 60, nullable = false)
     private String password;
 
-    @Column(length = 8, nullable = false)
+    @Column(name = "name", length = 8, nullable = false)
     private String name;
 
     @Embedded
+    @AttributeOverride(name = "zipCode", column = @Column(name = "zip_code"))
+    @AttributeOverride(name = "roadNameAddress", column = @Column(name = "road_name_address"))
     private Address address;
 
     @Builder

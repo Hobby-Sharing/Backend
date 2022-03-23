@@ -14,16 +14,16 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Entity @Table(name = "hobby")
 public class Hobby extends BaseTime {
 
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(columnDefinition = "BINARY(16)")
+    @Column(name = "id", updatable = false, columnDefinition = "BINARY(16)")
     private UUID id;
 
-    @Column(length = 20, nullable = false)
+    @Column(name = "name", length = 20, nullable = false)
     private String name;
 
 

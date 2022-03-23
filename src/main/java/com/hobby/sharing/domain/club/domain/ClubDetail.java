@@ -8,10 +8,12 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Entity @Table(name = "club_detail")
 public class ClubDetail {
 
     @EmbeddedId
+    @AttributeOverride(name = "userId", column = @Column(name = "user_id"))
+    @AttributeOverride(name = "clubId", column = @Column(name = "club_id"))
     private ClubId id;
 
     @ManyToOne

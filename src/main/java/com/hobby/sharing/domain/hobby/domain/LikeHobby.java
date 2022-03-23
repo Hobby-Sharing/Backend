@@ -10,11 +10,12 @@ import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Entity @Table(name = "like_hobby")
 public class LikeHobby {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -12,20 +12,21 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Entity @Table(name = "club")
 public class Club extends BaseTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false)
     private Long id;
 
-    @Column(length = 16, nullable = false)
+    @Column(name = "name", length = 16, nullable = false)
     private String name;
 
-    @Column(length = 30)
+    @Column(name = "introduction_message", length = 30)
     private String introductionMessage;
 
-    @Column(length = 64, nullable = false)
+    @Column(name = "manager_email", length = 64, nullable = false)
     private String managerEmail;
 
     @ManyToOne(fetch = FetchType.LAZY)
