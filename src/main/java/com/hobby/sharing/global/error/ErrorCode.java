@@ -10,7 +10,9 @@ public enum ErrorCode {
     EXPIRED_TOKEN(401, "AUTH-401-1", "Expired Token"),
     INVALID_TOKEN(401, "AUTH-401-2", "Invalid Token"),
 
-    USER_NOT_FOUND(404, "USER-404-1", "User Not Found");
+    USER_NOT_FOUND(404, "USER-404-1", "User Not Found"),
+
+    ADDRESS_SEARCH_FAILED(500, "SERVER-500-1", "Address Search Failed");
 
     private final int status;
     private final String code;
