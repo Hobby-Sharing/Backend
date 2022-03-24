@@ -42,6 +42,9 @@ dependencies {
     // jwt
     implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
 
+    // json
+    implementation 'org.json:json:20220320'
+
     // lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
