@@ -1,4 +1,4 @@
-package com.hobby.sharing.domain.user.domain;
+package com.hobby.sharing.domain.Address.domain;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

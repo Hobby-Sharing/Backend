@@ -1,5 +1,6 @@
 package com.hobby.sharing.domain.user.domain;
 
+import com.hobby.sharing.domain.Address.domain.Address;
 import com.hobby.sharing.domain.hobby.domain.LikeHobby;
 import com.hobby.sharing.domain.model.BaseTime;
 import com.hobby.sharing.domain.profile.domain.Profile;
