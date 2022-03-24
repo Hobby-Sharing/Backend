@@ -1,6 +1,6 @@
-package com.hobby.sharing.domain.profile.api;
+package com.hobby.sharing.domain.Address.api;
 
-import com.hobby.sharing.domain.profile.application.AddressSearchService;
+import com.hobby.sharing.domain.Address.application.AddressSearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

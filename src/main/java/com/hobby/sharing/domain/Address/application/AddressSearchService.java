@@ -1,4 +1,4 @@
-package com.hobby.sharing.domain.profile.application;
+package com.hobby.sharing.domain.Address.application;
 
 import com.hobby.sharing.domain.Address.exception.AddressSearchFailedException;
 import com.hobby.sharing.global.util.client.KakaoLocalClient;
