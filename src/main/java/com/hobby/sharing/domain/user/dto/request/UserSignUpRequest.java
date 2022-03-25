@@ -24,6 +24,6 @@ public class UserSignUpRequest {
     @Size(min = 0, max = 8, message = "이름은 8글자 이하여야 합니다.")
     private String name;
 
-    private String zipCode;
+    private int zipCode;
     private String roadNameAddress;
 }
