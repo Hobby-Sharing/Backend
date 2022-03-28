@@ -22,7 +22,7 @@ public class Profile extends BaseTime {
     @Column(name = "status_message", length = 30, nullable = false)
     private String statusMessage;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 

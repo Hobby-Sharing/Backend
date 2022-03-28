@@ -44,8 +44,8 @@ public class User extends BaseTime {
         this.address = new Address(roadNameAddress, zipcode);
     }
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private List<Profile> profileList;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private Profile profileList;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<LikeHobby> likeHobbyList;
