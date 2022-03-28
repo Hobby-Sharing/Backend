@@ -1,12 +1,12 @@
 package com.hobby.sharing.global.config;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.TimeZone;
 
-@Component
+@Configuration
 @EnableJpaAuditing
 public abstract class JpaAuditingConfig {
 
