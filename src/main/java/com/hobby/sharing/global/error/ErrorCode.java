@@ -9,7 +9,7 @@ public enum ErrorCode {
 
     EXPIRED_TOKEN(401, "AUTH-401-1", "Expired Token"),
     INVALID_TOKEN(401, "AUTH-401-2", "Invalid Token"),
-
+    PASSWORD_MISMATCH(401, "AUTH-401-3", "The Password incorrect"),
     USER_NOT_FOUND(404, "USER-404-1", "User Not Found"),
 
     USER_ALREADY_EXISTS(409, "USER-409-1", "This email is already registered."),
