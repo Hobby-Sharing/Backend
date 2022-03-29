@@ -4,6 +4,7 @@ import com.hobby.sharing.domain.user.dao.UserRepository;
 import com.hobby.sharing.domain.user.domain.User;
 import com.hobby.sharing.domain.user.dto.request.UserSignUpRequest;
 import com.hobby.sharing.domain.user.dto.response.UserTokenResponse;
+import com.hobby.sharing.domain.user.facade.UserFacade;
 import com.hobby.sharing.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,12 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserSignUpService {
 
+    private final UserFacade userFacade;
     private final UserRepository userRepository;
     private final JwtTokenProvider jwtTokenProvider;
     private final PasswordEncoder passwordEncoder;
 
     @Transactional(rollbackFor = Exception.class)
     public UserTokenResponse execute(UserSignUpRequest request) {
+        userFacade.checkUserExists(request.getEmail());
 
         User user = User.builder()
                 .email(request.getEmail())
