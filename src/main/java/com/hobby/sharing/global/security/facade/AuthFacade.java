@@ -1,6 +1,7 @@
 package com.hobby.sharing.global.security.facade;
 
 import com.hobby.sharing.global.security.auth.AuthDetails;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,7 @@ public class AuthFacade {
         return ((AuthDetails)getAuthentication()).getUsername();
     }
 
-    private Object getAuthentication() {
-        return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    private Authentication getAuthentication() {
+        return SecurityContextHolder.getContext().getAuthentication();
     }
 }
