@@ -22,7 +22,7 @@ public class UserSignUpService {
 
     @Transactional(rollbackFor = Exception.class)
     public UserTokenResponse execute(UserSignUpRequest request) {
-        userFacade.checkUserExists(request.getEmail());
+        userFacade.checkUserDuplicate(request.getEmail());
 
         User user = User.builder()
                 .email(request.getEmail())
@@ -35,7 +35,6 @@ public class UserSignUpService {
 
         String accessToken = jwtTokenProvider.generateAccessToken(request.getEmail());
         String refreshToken = jwtTokenProvider.generateRefreshToken(request.getEmail());
-
         return UserTokenResponse.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)

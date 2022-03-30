@@ -11,7 +11,7 @@ public class UserFacade {
 
     private final UserRepository userRepository;
 
-    public void checkUserExists(String email) {
+    public void checkUserDuplicate(String email) {
         if(userRepository.existsByEmail(email)) {
             throw UserAlreadyExistsException.EXCEPTION;
         }
