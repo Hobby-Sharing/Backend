@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class AuthFacade {
 
     public String getUserEmail() {
-        return ((AuthDetails)getAuthentication()).getUsername();
+        return ((AuthDetails)getAuthentication().getPrincipal()).getUsername();
     }
 
     private Authentication getAuthentication() {
