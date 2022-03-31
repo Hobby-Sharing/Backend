@@ -1,12 +1,13 @@
 package com.hobby.sharing.domain.user.dto.request;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.*;
 
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserSignUpRequest {
 
     @NotBlank(message = "이메일은 비어 있을 수 없습니다.")
