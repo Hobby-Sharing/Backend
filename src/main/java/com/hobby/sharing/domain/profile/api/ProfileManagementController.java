@@ -1,15 +1,14 @@
 package com.hobby.sharing.domain.profile.api;
 
+import com.hobby.sharing.domain.profile.application.ProfileChangeService;
 import com.hobby.sharing.domain.profile.application.ProfileDetailsInfoService;
 import com.hobby.sharing.domain.profile.application.ProfileRegistrationService;
+import com.hobby.sharing.domain.profile.dto.request.ProfileChangeRequest;
 import com.hobby.sharing.domain.profile.dto.request.ProfileRegistrationRequest;
 import com.hobby.sharing.domain.profile.dto.response.ProfileDetailsInfoResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -19,6 +18,7 @@ public class ProfileManagementController {
 
     private final ProfileDetailsInfoService profileDetailsInfoService;
     private final ProfileRegistrationService profileRegistrationService;
+    private final ProfileChangeService profileChangeService;
 
     @GetMapping("/profile") @PreAuthorize("isAuthenticated()")
     public ProfileDetailsInfoResponse getProfileDetails() {
@@ -28,5 +28,10 @@ public class ProfileManagementController {
     @PostMapping("/profile") @PreAuthorize("isAuthenticated()")
     public void profileRegistration(@Valid @RequestBody ProfileRegistrationRequest request) {
         profileRegistrationService.execute(request);
+    }
+
+    @PatchMapping("/profile") @PreAuthorize("isAuthenticated()")
+    public void profileChange(@RequestBody ProfileChangeRequest request) {
+        profileChangeService.execute(request);
     }
 }
