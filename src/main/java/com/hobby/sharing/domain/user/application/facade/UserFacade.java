@@ -1,4 +1,4 @@
-package com.hobby.sharing.global.facade;
+package com.hobby.sharing.domain.user.application.facade;
 
 import com.hobby.sharing.domain.profile.dao.ProfileRepository;
 import com.hobby.sharing.domain.profile.exception.ProfileAlreadyExistsException;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
-public class CheckFacade {
+public class UserFacade {
 
     private final CustomUserRepository customUserRepository;
     private final UserRepository userRepository;
