@@ -2,7 +2,10 @@ package com.hobby.sharing.domain.profile.domain;
 
 import com.hobby.sharing.domain.model.BaseTime;
 import com.hobby.sharing.domain.user.domain.User;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -29,6 +32,11 @@ public class Profile extends BaseTime {
     @Builder
     public Profile(User user, String profileImageUrl, String statusMessage) {
         this.user = user;
+        this.profileImageUrl = profileImageUrl;
+        this.statusMessage = statusMessage;
+    }
+
+    public void updateProfile(String profileImageUrl, String statusMessage) {
         this.profileImageUrl = profileImageUrl;
         this.statusMessage = statusMessage;
     }
