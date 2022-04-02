@@ -1,4 +1,4 @@
-package com.hobby.sharing.global.security.facade;
+package com.hobby.sharing.global.security.auth.facade;
 
 import com.hobby.sharing.domain.user.dao.UserRepository;
 import com.hobby.sharing.domain.user.domain.User;
