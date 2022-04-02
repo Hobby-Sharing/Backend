@@ -13,7 +13,7 @@ public enum ErrorCode {
     USER_NOT_FOUND(404, "USER-404-1", "User Not Found"),
 
     USER_ALREADY_EXISTS(409, "USER-409-1", "This email is already registered."),
-
+    PROFILE_ALREADY_EXISTS(409, "PROFILE-409-1", "This is a registered profile."),
     ADDRESS_SEARCH_FAILED(500, "SERVER-500-1", "Address Search Failed");
 
     private final int status;
