@@ -4,9 +4,13 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ProfileChangeRequest {
+    @NotNull
     private String profileImageUrl;
+    @NotNull
     private String statusMessage;
 }
