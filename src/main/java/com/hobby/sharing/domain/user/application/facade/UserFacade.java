@@ -1,10 +1,7 @@
 package com.hobby.sharing.domain.user.application.facade;
 
-import com.hobby.sharing.domain.profile.dao.ProfileRepository;
-import com.hobby.sharing.domain.profile.exception.ProfileAlreadyExistsException;
 import com.hobby.sharing.domain.user.dao.CustomUserRepository;
 import com.hobby.sharing.domain.user.dao.UserRepository;
-import com.hobby.sharing.domain.user.domain.User;
 import com.hobby.sharing.domain.user.exception.PasswordMismatchException;
 import com.hobby.sharing.domain.user.exception.UserAlreadyExistsException;
 import com.hobby.sharing.domain.user.exception.UserNotFoundException;
@@ -18,18 +15,11 @@ public class UserFacade {
 
     private final CustomUserRepository customUserRepository;
     private final UserRepository userRepository;
-    private final ProfileRepository profileRepository;
     private final PasswordEncoder passwordEncoder;
 
     public void checkUserDuplicate(String email) {
         if (userRepository.existsByEmail(email)) {
             throw UserAlreadyExistsException.EXCEPTION;
-        }
-    }
-
-    public void checkProfileDuplicate(User user ) {
-        if (profileRepository.existsByUser(user)) {
-            throw ProfileAlreadyExistsException.EXCEPTION;
         }
     }
 
