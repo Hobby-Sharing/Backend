@@ -19,7 +19,7 @@ public class Profile extends BaseTime {
     @Column(name = "id", updatable = false)
     private Long id;
 
-    @Column(name = "profile_image_url", length = 50, nullable = false)
+    @Column(name = "profile_image_url", nullable = false)
     private String profileImageUrl;
 
     @Column(name = "status_message", length = 30, nullable = false)
