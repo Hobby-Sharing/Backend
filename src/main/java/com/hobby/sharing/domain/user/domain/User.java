@@ -36,6 +36,11 @@ public class User extends BaseTime {
     @AttributeOverride(name = "roadNameAddress", column = @Column(name = "road_name_address"))
     private Address address;
 
+    public void updateUserProfile(String name, int zipCode, String roadNameAddress) {
+        this.name = name;
+        this.address = new Address(roadNameAddress, zipCode);
+    }
+
     @Builder
     public User(String email, String password, String name, String roadNameAddress, int zipcode) {
         this.email = email;
@@ -43,7 +48,7 @@ public class User extends BaseTime {
         this.name = name;
         this.address = new Address(roadNameAddress, zipcode);
     }
-
+    
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Profile profileList;
 
