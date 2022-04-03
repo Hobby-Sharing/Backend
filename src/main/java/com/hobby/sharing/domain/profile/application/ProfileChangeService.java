@@ -22,7 +22,8 @@ public class ProfileChangeService {
         User user = authFacade.getUser();
         user.updateUserProfile(request.getName(), request.getZipCode(), request.getRoadNameAddress());
 
-        Profile profile = profileRepository.findByUser(user).orElseThrow(() -> UserNotFoundException.EXCEPTION);
+        Profile profile = profileRepository.findByUser(user)
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
         profile.updateProfile(request.getProfileImageUrl(), request.getStatusMessage());
     }
 }
