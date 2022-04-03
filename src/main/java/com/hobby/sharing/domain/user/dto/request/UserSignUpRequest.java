@@ -32,4 +32,12 @@ public class UserSignUpRequest {
 
     @NotBlank(message = "도로명주소를 입력해주세요.")
     private String roadNameAddress;
+
+    @NotBlank(message = "프로필 이미지 URL은 비어 있을 수 없습니다.")
+    private String profileImageUrl;
+
+    @Size(max = 30, message = "상태 메시지는 30글자를 초과할 수 없습니다.")
+    @NotBlank(message = "상태 메시지는 비어 있을 수 없습니다.")
+    private String statusMessage;
+
 }

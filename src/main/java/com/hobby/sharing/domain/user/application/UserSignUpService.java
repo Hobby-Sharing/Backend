@@ -1,5 +1,7 @@
 package com.hobby.sharing.domain.user.application;
 
+import com.hobby.sharing.domain.profile.dao.ProfileRepository;
+import com.hobby.sharing.domain.profile.domain.Profile;
 import com.hobby.sharing.domain.user.dao.UserRepository;
 import com.hobby.sharing.domain.user.domain.User;
 import com.hobby.sharing.domain.user.dto.request.UserSignUpRequest;
@@ -17,6 +19,7 @@ public class UserSignUpService {
 
     private final UserFacade userFacade;
     private final UserRepository userRepository;
+    private final ProfileRepository profileRepository;
     private final JwtTokenProvider jwtTokenProvider;
     private final PasswordEncoder passwordEncoder;
 
@@ -32,6 +35,13 @@ public class UserSignUpService {
                 .roadNameAddress(request.getRoadNameAddress())
                 .build();
         userRepository.save(user);
+
+        Profile profile = Profile.builder()
+                .user(user)
+                .profileImageUrl(request.getProfileImageUrl())
+                .statusMessage(request.getStatusMessage())
+                .build();
+        profileRepository.save(profile);
 
         String accessToken = jwtTokenProvider.generateAccessToken(request.getEmail());
         String refreshToken = jwtTokenProvider.generateRefreshToken(request.getEmail());

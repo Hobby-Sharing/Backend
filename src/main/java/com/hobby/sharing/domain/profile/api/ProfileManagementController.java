@@ -2,7 +2,6 @@ package com.hobby.sharing.domain.profile.api;
 
 import com.hobby.sharing.domain.profile.application.ProfileChangeService;
 import com.hobby.sharing.domain.profile.application.ProfileDetailsInfoService;
-import com.hobby.sharing.domain.profile.application.ProfileRegistrationService;
 import com.hobby.sharing.domain.profile.dto.request.ProfileChangeRequest;
 import com.hobby.sharing.domain.profile.dto.request.ProfileRegistrationRequest;
 import com.hobby.sharing.domain.profile.dto.response.ProfileDetailsInfoResponse;
@@ -18,18 +17,11 @@ import javax.validation.Valid;
 public class ProfileManagementController {
 
     private final ProfileDetailsInfoService profileDetailsInfoService;
-    private final ProfileRegistrationService profileRegistrationService;
     private final ProfileChangeService profileChangeService;
 
     @GetMapping("/profile") @PreAuthorize("isAuthenticated()")
     public ProfileDetailsInfoResponse getProfileDetails() {
         return profileDetailsInfoService.execute();
-    }
-
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PostMapping("/profile") @PreAuthorize("isAuthenticated()")
-    public void profileRegistration(@Valid @RequestBody ProfileRegistrationRequest request) {
-        profileRegistrationService.execute(request);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
