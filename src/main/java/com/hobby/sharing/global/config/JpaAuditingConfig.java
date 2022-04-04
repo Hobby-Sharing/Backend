@@ -8,7 +8,7 @@ import java.util.TimeZone;
 
 @Configuration
 @EnableJpaAuditing
-public abstract class JpaAuditingConfig {
+public class JpaAuditingConfig {
 
     @PostConstruct
     private void started() {
