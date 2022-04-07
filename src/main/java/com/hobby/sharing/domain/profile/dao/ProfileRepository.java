@@ -8,5 +8,4 @@ import java.util.Optional;
 
 public interface ProfileRepository extends CrudRepository<Profile, Long> {
     Optional<Profile> findByUser(User user);
-    boolean existsByUser(User user);
 }

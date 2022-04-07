@@ -17,7 +17,8 @@ public class AuthFacade {
 
     public User getUser() {
         String email = getUserEmail();
-        return userRepository.findByEmail(email).orElseThrow(() -> UserNotFoundException.EXCEPTION);
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 
     private String getUserEmail() {
