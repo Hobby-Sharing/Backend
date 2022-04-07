@@ -16,6 +16,7 @@ public enum ErrorCode {
 
     USER_ALREADY_EXISTS(409, "USER-409-1", "This email is already registered"),
     PROFILE_ALREADY_EXISTS(409, "PROFILE-409-1", "This is a registered profile"),
+    LIKE_HOBBY_ALREADY_EXISTS(409, "HOBBY-409-1", "Hobby already like"),
 
     ADDRESS_SEARCH_FAILED(500, "SERVER-500-1", "Address Search Failed");
 
