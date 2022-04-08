@@ -11,7 +11,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class SelectAllHobbyService {
+public class SearchAllHobbyService {
 
     private final HobbyRepository hobbyRepository;
 

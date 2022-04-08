@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class CreateLikeHobbyService {
+public class HobbyLikeService {
 
     private final AuthFacade authFacade;
     private final HobbyFacade hobbyFacade;
