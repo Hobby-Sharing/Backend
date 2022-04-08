@@ -17,7 +17,7 @@ public class SelectAllHobbyService {
 
     @Transactional(readOnly = true)
     public List<HobbyListResponse> execute() {
-        return hobbyRepository.findAll(Sort.by(Sort.Direction.DESC, "id"))
+        return hobbyRepository.findAll(Sort.by(Sort.Direction.ASC, "name"))
                 .stream()
                 .map(HobbyListResponse::from)
                 .toList();
