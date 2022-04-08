@@ -2,6 +2,7 @@ package com.hobby.sharing.domain.hobby.application.facade;
 
 import com.hobby.sharing.domain.hobby.dao.LikeHobbyRepository;
 import com.hobby.sharing.domain.hobby.exception.LikeHobbyAlreadyExistsException;
+import com.hobby.sharing.domain.hobby.exception.LikeHobbyNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,12 @@ public class HobbyFacade {
     public void checkLikeHobbyDuplicate(UUID hobbyId, Long userId) {
         if (likeHobbyRepository.existsByHobbyIdAndUserId(hobbyId, userId)) {
             throw LikeHobbyAlreadyExistsException.EXCEPTION;
+        }
+    }
+
+    public void checkLikeHobbyExists(UUID hobbyId, Long userId) {
+        if(likeHobbyRepository.existsByHobbyIdAndUserId(hobbyId, userId)) {
+            throw LikeHobbyNotFoundException.EXCEPTION;
         }
     }
 }
