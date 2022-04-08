@@ -13,6 +13,7 @@ public enum ErrorCode {
 
     USER_NOT_FOUND(404, "USER-404-1", "User Not Found"),
     HOBBY_NOT_FOUND(404, "HOBBY-404-1", "Hobby Not Found"),
+    LIKE_HOBBY_NOT_FOUND(404, "HOBBY-404-2", "Like Hobby Not Found"),
 
     USER_ALREADY_EXISTS(409, "USER-409-1", "This email is already registered"),
     PROFILE_ALREADY_EXISTS(409, "PROFILE-409-1", "This is a registered profile"),
