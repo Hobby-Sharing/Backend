@@ -5,7 +5,7 @@ import com.hobby.sharing.domain.hobby.dao.HobbyRepository;
 import com.hobby.sharing.domain.hobby.dao.LikeHobbyRepository;
 import com.hobby.sharing.domain.hobby.domain.Hobby;
 import com.hobby.sharing.domain.hobby.domain.LikeHobby;
-import com.hobby.sharing.domain.hobby.dto.request.CreateLikeHobbyRequest;
+import com.hobby.sharing.domain.hobby.dto.request.LikeHobbyRequest;
 import com.hobby.sharing.domain.hobby.exception.HobbyNotFoundException;
 import com.hobby.sharing.domain.user.domain.User;
 import com.hobby.sharing.global.security.auth.facade.AuthFacade;
@@ -22,7 +22,7 @@ public class CreateLikeHobbyService {
     private final HobbyRepository hobbyRepository;
     private final LikeHobbyRepository likeHobbyRepository;
 
-    public void execute(CreateLikeHobbyRequest request) {
+    public void execute(LikeHobbyRequest request) {
         User user = authFacade.getUser();
         Hobby hobby = hobbyRepository.findById(request.getHobbyId())
                 .orElseThrow(() -> HobbyNotFoundException.EXCEPTION);

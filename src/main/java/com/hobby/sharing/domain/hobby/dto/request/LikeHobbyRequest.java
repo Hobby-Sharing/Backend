@@ -8,6 +8,6 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class CreateLikeHobbyRequest {
+public class LikeHobbyRequest {
     private UUID hobbyId;
 }
