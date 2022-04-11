@@ -9,10 +9,11 @@ import java.util.UUID;
 @Getter
 @AllArgsConstructor
 public class SelectLikeHobbyResponse {
-    private Long likeHobbyId;
     private UUID hobbyId;
+    private String hobbyName;
+    private String categoryName;
 
     public static SelectLikeHobbyResponse from(LikeHobby likeHobby) {
-        return new SelectLikeHobbyResponse(likeHobby.getId(), likeHobby.getHobby().getId());
+        return new SelectLikeHobbyResponse(likeHobby.getHobby().getId(), likeHobby.getHobby().getName(), likeHobby.getHobby().getCategory().getName());
     }
 }
