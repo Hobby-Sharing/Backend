@@ -5,6 +5,7 @@ import com.hobby.sharing.domain.hobby.dto.response.SelectLikeHobbyResponse;
 import com.hobby.sharing.domain.user.domain.User;
 import com.hobby.sharing.global.security.auth.facade.AuthFacade;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +22,7 @@ public class SearchLikeHobbyService {
     public List<SelectLikeHobbyResponse> execute() {
         User user = authFacade.getUser();
 
-        return likeHobbyRepository.findAllByUserId(user.getId())
+        return likeHobbyRepository.findAllByUserId(user.getId(), Sort.by(Sort.Direction.ASC, "hobbyName"))
                 .stream()
                 .map(SelectLikeHobbyResponse::from)
                 .toList();
