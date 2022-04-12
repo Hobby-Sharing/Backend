@@ -1,12 +1,15 @@
 package com.hobby.sharing.domain.club.application;
 
+import com.hobby.sharing.domain.club.dao.ClubDetailRepository;
 import com.hobby.sharing.domain.club.dao.ClubRepository;
 import com.hobby.sharing.domain.club.domain.Club;
+import com.hobby.sharing.domain.club.domain.ClubDetail;
 import com.hobby.sharing.domain.club.dto.request.CreateClubRequest;
 import com.hobby.sharing.domain.club.exception.ClubAlreadyExistsException;
 import com.hobby.sharing.domain.hobby.dao.HobbyRepository;
 import com.hobby.sharing.domain.hobby.domain.Hobby;
 import com.hobby.sharing.domain.hobby.exception.HobbyNotFoundException;
+import com.hobby.sharing.domain.user.domain.User;
 import com.hobby.sharing.global.security.auth.facade.AuthFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,9 +21,10 @@ public class CreateClubService {
     private final AuthFacade authFacade;
     private final ClubRepository clubRepository;
     private final HobbyRepository hobbyRepository;
+    private final ClubDetailRepository clubDetailRepository;
 
     public void execute(CreateClubRequest request) {
-        String email = authFacade.getUser().getEmail();
+        User user = authFacade.getUser();
         Hobby hobby = hobbyRepository.findById(request.getHobbyId())
                 .orElseThrow(() -> HobbyNotFoundException.EXCEPTION);
 
@@ -28,10 +32,16 @@ public class CreateClubService {
                 .name(request.getName())
                 .introMessage(request.getIntroMessage())
                 .hobby(hobby)
-                .managerEmail(email)
+                .managerEmail(user.getEmail())
                 .build();
         checkClubExists(club.getName());
         clubRepository.save(club);
+
+        ClubDetail clubDetail = ClubDetail.builder()
+                .user(user)
+                .club(club)
+                .build();
+        clubDetailRepository.save(clubDetail);
     }
 
     private void checkClubExists(String clubName) {
