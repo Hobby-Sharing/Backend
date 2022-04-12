@@ -24,7 +24,7 @@ public class Club extends BaseTime {
     private String name;
 
     @Column(name = "introduction_message", length = 30)
-    private String introductionMessage;
+    private String introMessage;
 
     @Column(name = "manager_email", length = 64, nullable = false)
     private String managerEmail;
@@ -34,9 +34,9 @@ public class Club extends BaseTime {
     private Hobby hobby;
 
     @Builder
-    public Club(String name, String introductionMessage, String managerEmail, Hobby hobby) {
+    public Club(String name, String introMessage, String managerEmail, Hobby hobby) {
         this.name = name;
-        this.introductionMessage = introductionMessage;
+        this.introMessage = introMessage;
         this.managerEmail = managerEmail;
         this.hobby = hobby;
     }
