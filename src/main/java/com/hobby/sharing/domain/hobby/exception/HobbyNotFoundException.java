@@ -5,7 +5,7 @@ import com.hobby.sharing.global.error.exception.BasicException;
 
 public class HobbyNotFoundException extends BasicException {
 
-    public final static HobbyNotFoundException EXCEPTION = new HobbyNotFoundException();
+    public static final HobbyNotFoundException EXCEPTION = new HobbyNotFoundException();
 
     private HobbyNotFoundException(){
         super(ErrorCode.HOBBY_NOT_FOUND);

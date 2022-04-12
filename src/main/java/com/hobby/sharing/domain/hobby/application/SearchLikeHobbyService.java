@@ -1,7 +1,7 @@
 package com.hobby.sharing.domain.hobby.application;
 
 import com.hobby.sharing.domain.hobby.dao.LikeHobbyRepository;
-import com.hobby.sharing.domain.hobby.dto.response.SelectLikeHobbyResponse;
+import com.hobby.sharing.domain.hobby.dto.response.LikeHobbyResponse;
 import com.hobby.sharing.domain.user.domain.User;
 import com.hobby.sharing.global.security.auth.facade.AuthFacade;
 import lombok.RequiredArgsConstructor;
@@ -19,12 +19,12 @@ public class SearchLikeHobbyService {
     private final LikeHobbyRepository likeHobbyRepository;
 
     @Transactional(readOnly = true)
-    public List<SelectLikeHobbyResponse> execute() {
+    public List<LikeHobbyResponse> execute() {
         User user = authFacade.getUser();
 
         return likeHobbyRepository.findAllByUserId(user.getId(), Sort.by(Sort.Direction.ASC, "hobbyName"))
                 .stream()
-                .map(SelectLikeHobbyResponse::from)
+                .map(LikeHobbyResponse::from)
                 .toList();
     }
 }

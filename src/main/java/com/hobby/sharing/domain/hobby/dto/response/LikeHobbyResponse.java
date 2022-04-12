@@ -8,12 +8,12 @@ import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
-public class SelectLikeHobbyResponse {
+public class LikeHobbyResponse {
     private UUID hobbyId;
     private String hobbyName;
     private String categoryName;
 
-    public static SelectLikeHobbyResponse from(LikeHobby likeHobby) {
-        return new SelectLikeHobbyResponse(likeHobby.getHobby().getId(), likeHobby.getHobby().getName(), likeHobby.getHobby().getCategory().getName());
+    public static LikeHobbyResponse from(LikeHobby likeHobby) {
+        return new LikeHobbyResponse(likeHobby.getHobby().getId(), likeHobby.getHobby().getName(), likeHobby.getHobby().getCategory().getName());
     }
 }

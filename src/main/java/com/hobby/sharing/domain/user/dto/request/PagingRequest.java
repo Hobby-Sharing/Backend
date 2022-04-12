@@ -6,6 +6,6 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class PagingRequest {
-    private int pageNo;
+    private int number;
     private int size;
 }

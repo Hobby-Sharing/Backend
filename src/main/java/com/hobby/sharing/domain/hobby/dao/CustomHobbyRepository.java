@@ -1,7 +1,7 @@
 package com.hobby.sharing.domain.hobby.dao;
 
-import com.hobby.sharing.domain.hobby.dto.response.HobbyListResponse;
-import com.hobby.sharing.domain.hobby.dto.response.SelectLikeHobbyResponse;
+import com.hobby.sharing.domain.hobby.dto.response.HobbyResponse;
+import com.hobby.sharing.domain.hobby.dto.response.LikeHobbyResponse;
 import com.hobby.sharing.domain.user.dto.request.PagingRequest;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -19,23 +19,23 @@ public class CustomHobbyRepository {
 
     private final JPAQueryFactory jpaQueryFactory;
 
-    public List<HobbyListResponse> getAllHobby(PagingRequest request) {
+    public List<HobbyResponse> getAllHobby(PagingRequest page) {
         return jpaQueryFactory
-                .select(constructor(HobbyListResponse.class,
+                .select(constructor(HobbyResponse.class,
                         hobby.id,
                         hobby.name,
                         hobby.category.name))
                 .from(hobby)
                 .orderBy(hobby.name.asc())
-                .offset(request.getSize() * request.getPageNo())
-                .limit(request.getSize())
+                .offset(page.getSize() * page.getNumber())
+                .limit(page.getSize())
                 .fetch();
     }
 
 
-    public List<SelectLikeHobbyResponse> getAllLikeHobby(Long userId) {
+    public List<LikeHobbyResponse> getAllLikeHobby(Long userId) {
         return jpaQueryFactory
-                .select(constructor(SelectLikeHobbyResponse.class,
+                .select(constructor(LikeHobbyResponse.class,
                         hobby.id,
                         hobby.name,
                         hobby.category.name))
