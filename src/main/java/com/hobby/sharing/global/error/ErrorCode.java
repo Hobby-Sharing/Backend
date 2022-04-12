@@ -10,6 +10,7 @@ public enum ErrorCode {
     EXPIRED_TOKEN(401, "AUTH-401-1", "Expired Token"),
     INVALID_TOKEN(401, "AUTH-401-2", "Invalid Token"),
     PASSWORD_MISMATCH(401, "AUTH-401-3", "The Password incorrect"),
+    TOKEN_REFRESH_FAILED(401, "AUTH-401-4", "Token Refresh Failed"),
 
     USER_NOT_FOUND(404, "USER-404-1", "User Not Found"),
     HOBBY_NOT_FOUND(404, "HOBBY-404-1", "Hobby Not Found"),

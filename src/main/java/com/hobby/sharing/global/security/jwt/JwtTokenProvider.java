@@ -70,18 +70,22 @@ public class JwtTokenProvider {
     }
 
     public Authentication getAuthentication(Claims tokenBody) {
-        if (!checkAccessToken(tokenBody)) {
+        if (!isAccessToken(tokenBody)) {
             throw InvalidTokenException.EXCEPTION;
         }
         UserDetails userDetails = authDetailsService.loadUserByUsername(getEmail(tokenBody));
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 
-    private boolean checkAccessToken(Claims tokenBody) {
+    private boolean isAccessToken(Claims tokenBody) {
         return tokenBody.get("type", String.class).equals("access");
     }
 
-    private String getEmail(Claims tokenBody) {
+    public boolean isRefreshToken(Claims tokenBody) {
+        return tokenBody.get("type", String.class).equals("refresh");
+    }
+
+    public String getEmail(Claims tokenBody) {
         return tokenBody.getSubject();
     }
 }
