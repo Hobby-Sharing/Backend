@@ -25,13 +25,13 @@ public class HobbyController {
     private final SearchLikeHobbyService searchLikeHobbyService;
 
     @GetMapping("/hobby")
-    public List<HobbyResponse> hobbyList(@RequestParam("page") @Min(0) int page,
+    public List<HobbyResponse> getHobbyList(@RequestParam("page") @Min(0) int page,
                                          @RequestParam("size") @Min(1) @Max(50) int size) {
         return searchAllHobbyService.execute(new PagingRequest(page-1, size));
     }
 
     @GetMapping("/hobby/like") @PreAuthorize("isAuthenticated()")
-    public List<LikeHobbyResponse> likeHobbyList() {
+    public List<LikeHobbyResponse> getLikeHobbyList() {
         return searchLikeHobbyService.execute();
     }
 

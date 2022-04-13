@@ -14,7 +14,7 @@ import javax.validation.Valid;
 
 @RequiredArgsConstructor
 @RestController
-public class ProfileManagementController {
+public class ProfileController {
 
     private final ProfileDetailsInfoService profileDetailsInfoService;
     private final ProfileChangeService profileChangeService;
