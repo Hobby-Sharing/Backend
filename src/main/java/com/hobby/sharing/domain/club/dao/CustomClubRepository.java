@@ -24,7 +24,9 @@ public class CustomClubRepository {
                         hobby.id,
                         hobby.name,
                         club.name,
-                        hobby.category.name))
+                        hobby.category.name,
+                        club.managerEmail,
+                        club.introMessage))
                 .from(hobby)
                 .join(club).on(club.hobby.id.eq(hobby.id))
                 .join(likeHobby).on(likeHobby.user.id.eq(userId)

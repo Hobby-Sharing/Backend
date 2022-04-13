@@ -12,4 +12,6 @@ public class ClubListResponse {
     private String hobbyName;
     private String clubName;
     private String categoryName;
+    private String managerEmail;
+    private String introMessage;
 }
