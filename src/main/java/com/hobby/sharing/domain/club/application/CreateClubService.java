@@ -6,7 +6,6 @@ import com.hobby.sharing.domain.club.domain.Club;
 import com.hobby.sharing.domain.club.domain.ClubMember;
 import com.hobby.sharing.domain.club.domain.role.ClubRole;
 import com.hobby.sharing.domain.club.dto.request.CreateClubRequest;
-import com.hobby.sharing.domain.club.exception.ClubAlreadyExistsException;
 import com.hobby.sharing.domain.hobby.dao.HobbyRepository;
 import com.hobby.sharing.domain.hobby.domain.Hobby;
 import com.hobby.sharing.domain.hobby.exception.HobbyNotFoundException;
@@ -20,6 +19,7 @@ import org.springframework.stereotype.Service;
 public class CreateClubService {
 
     private final AuthFacade authFacade;
+    private final ClubFacade clubFacade;
     private final ClubRepository clubRepository;
     private final HobbyRepository hobbyRepository;
     private final ClubMemberRepository clubMemberRepository;
@@ -35,7 +35,7 @@ public class CreateClubService {
                 .hobby(hobby)
                 .managerEmail(user.getEmail())
                 .build();
-        checkClubExists(club.getName());
+        clubFacade.checkClubNameExists(club.getName());
         clubRepository.save(club);
 
         ClubMember clubMember = ClubMember.builder()
@@ -44,11 +44,5 @@ public class CreateClubService {
                 .role(ClubRole.ADMIN)
                 .build();
         clubMemberRepository.save(clubMember);
-    }
-
-    private void checkClubExists(String clubName) {
-        if (clubRepository.existsByName(clubName)) {
-            throw ClubAlreadyExistsException.EXCEPTION;
-        }
     }
 }
