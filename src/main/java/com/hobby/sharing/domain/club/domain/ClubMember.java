@@ -1,6 +1,7 @@
 package com.hobby.sharing.domain.club.domain;
 
-import com.hobby.sharing.domain.club.application.ClubRole;
+import com.hobby.sharing.domain.club.domain.embed.ClubId;
+import com.hobby.sharing.domain.club.domain.role.ClubRole;
 import com.hobby.sharing.domain.user.domain.User;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,9 +34,10 @@ public class ClubMember {
     private ClubRole role;
 
     @Builder
-    public ClubMember(User user, Club club) {
+    public ClubMember(User user, Club club, ClubRole role) {
         this.id = new ClubId(user.getId(), club.getId());
         this.user = user;
         this.club = club;
+        this.role = role;
     }
 }

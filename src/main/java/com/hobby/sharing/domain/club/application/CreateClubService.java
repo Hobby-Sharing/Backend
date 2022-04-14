@@ -1,9 +1,10 @@
 package com.hobby.sharing.domain.club.application;
 
-import com.hobby.sharing.domain.club.dao.ClubDetailRepository;
+import com.hobby.sharing.domain.club.dao.ClubMemberRepository;
 import com.hobby.sharing.domain.club.dao.ClubRepository;
 import com.hobby.sharing.domain.club.domain.Club;
-import com.hobby.sharing.domain.club.domain.ClubDetail;
+import com.hobby.sharing.domain.club.domain.ClubMember;
+import com.hobby.sharing.domain.club.domain.role.ClubRole;
 import com.hobby.sharing.domain.club.dto.request.CreateClubRequest;
 import com.hobby.sharing.domain.club.exception.ClubAlreadyExistsException;
 import com.hobby.sharing.domain.hobby.dao.HobbyRepository;
@@ -21,7 +22,7 @@ public class CreateClubService {
     private final AuthFacade authFacade;
     private final ClubRepository clubRepository;
     private final HobbyRepository hobbyRepository;
-    private final ClubDetailRepository clubDetailRepository;
+    private final ClubMemberRepository clubMemberRepository;
 
     public void execute(CreateClubRequest request) {
         User user = authFacade.getUser();
@@ -37,11 +38,12 @@ public class CreateClubService {
         checkClubExists(club.getName());
         clubRepository.save(club);
 
-        ClubDetail clubDetail = ClubDetail.builder()
+        ClubMember clubMember = ClubMember.builder()
                 .user(user)
                 .club(club)
+                .role(ClubRole.ADMIN)
                 .build();
-        clubDetailRepository.save(clubDetail);
+        clubMemberRepository.save(clubMember);
     }
 
     private void checkClubExists(String clubName) {
