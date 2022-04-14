@@ -21,6 +21,8 @@ public enum ErrorCode {
     PROFILE_ALREADY_EXISTS(409, "PROFILE-409-1", "This is a registered profile"),
     LIKE_HOBBY_ALREADY_EXISTS(409, "HOBBY-409-1", "Hobby already like"),
     CLUB_ALREADY_EXISTS(409, "CLUB-409-1", "Club name already exists"),
+    CLUB_DETAIL_ALREADY_EXISTS(409, "CLUB-409-2", "Club detail already exists"),
+    CLUB_MEMBER_ALREADY_EXISTS(409, "CLUB-409-3", "Club member already exists"),
 
     ADDRESS_SEARCH_FAILED(500, "SERVER-500-1", "Address Search Failed");
 
