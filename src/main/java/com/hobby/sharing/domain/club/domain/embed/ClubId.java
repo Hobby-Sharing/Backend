@@ -1,4 +1,4 @@
-package com.hobby.sharing.domain.club.domain;
+package com.hobby.sharing.domain.club.domain.embed;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

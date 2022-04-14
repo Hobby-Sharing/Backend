@@ -1,5 +1,6 @@
 package com.hobby.sharing.domain.club.domain;
 
+import com.hobby.sharing.domain.club.domain.embed.ClubId;
 import com.hobby.sharing.domain.user.domain.User;
 import lombok.AccessLevel;
 import lombok.Builder;
