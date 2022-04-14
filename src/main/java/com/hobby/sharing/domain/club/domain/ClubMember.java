@@ -1,5 +1,6 @@
 package com.hobby.sharing.domain.club.domain;
 
+import com.hobby.sharing.domain.club.application.ClubRole;
 import com.hobby.sharing.domain.user.domain.User;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,6 +27,10 @@ public class ClubMember {
     @MapsId("clubId")
     @JoinColumn(name = "club_id")
     private Club club;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "CLUB_ROLE", length = 5, nullable = false)
+    private ClubRole role;
 
     @Builder
     public ClubMember(User user, Club club) {
