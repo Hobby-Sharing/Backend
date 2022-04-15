@@ -26,17 +26,17 @@ public class UserController {
     private final TokenRefreshService tokenRefreshService;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/sign-up")
+    @PostMapping("/user/sign-up")
     public UserTokenResponse userSignUp(@RequestBody @Valid UserSignUpRequest userSignUpRequest) {
         return userSignUpService.execute(userSignUpRequest);
     }
 
-    @PostMapping("/login")
+    @PostMapping("/user/login")
     public UserTokenResponse login(@RequestBody @Valid LoginRequest request) {
         return userLoginService.execute(request);
     }
 
-    @PostMapping("/refresh")
+    @PostMapping("/user/refresh")
     public TokenRefreshResponse tokenRefresh(@RequestBody @Valid TokenRefreshRequest request) {
         return tokenRefreshService.execute(request);
     }
