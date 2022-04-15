@@ -1,7 +1,6 @@
 package com.hobby.sharing.domain.club.dao;
 
-import com.hobby.sharing.domain.club.domain.QClubDetail;
-import com.hobby.sharing.domain.club.domain.QClubMember;
+import com.hobby.sharing.domain.club.domain.role.ClubRole;
 import com.hobby.sharing.domain.club.dto.response.ClubListResponse;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -54,6 +53,16 @@ public class CustomClubRepository {
                 .from(clubMember)
                 .where(clubMember.user.id.eq(userId)
                         .and(clubMember.club.id.eq(clubId)))
+                .fetchFirst() != null;
+    }
+
+    public boolean confirmClubAdmin(Long userId, Long clubId) {
+        return jpaQueryFactory
+                .selectOne()
+                .from(clubMember)
+                .where(clubMember.user.id.eq(userId)
+                        .and(clubMember.club.id.eq(clubId))
+                        .and(clubMember.role.eq(ClubRole.ADMIN)))
                 .fetchFirst() != null;
     }
 }
