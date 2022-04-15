@@ -1,9 +1,9 @@
 package com.hobby.sharing.domain.club.exception;
 
 import com.hobby.sharing.global.error.ErrorCode;
-import com.hobby.sharing.global.error.exception.BasicException;
+import com.hobby.sharing.global.error.exception.GlobalException;
 
-public class ClubDetailAlreadyExistsException extends BasicException {
+public class ClubDetailAlreadyExistsException extends GlobalException {
 
     public static final ClubDetailAlreadyExistsException EXCEPTION = new ClubDetailAlreadyExistsException();
 

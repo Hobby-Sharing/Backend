@@ -1,9 +1,9 @@
 package com.hobby.sharing.global.security.exception;
 
 import com.hobby.sharing.global.error.ErrorCode;
-import com.hobby.sharing.global.error.exception.BasicException;
+import com.hobby.sharing.global.error.exception.GlobalException;
 
-public class TokenRefreshException extends BasicException {
+public class TokenRefreshException extends GlobalException {
 
     public static final TokenRefreshException EXCEPTION = new TokenRefreshException();
 

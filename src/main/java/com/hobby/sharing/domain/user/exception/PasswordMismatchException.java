@@ -1,9 +1,9 @@
 package com.hobby.sharing.domain.user.exception;
 
 import com.hobby.sharing.global.error.ErrorCode;
-import com.hobby.sharing.global.error.exception.BasicException;
+import com.hobby.sharing.global.error.exception.GlobalException;
 
-public class PasswordMismatchException extends BasicException {
+public class PasswordMismatchException extends GlobalException {
 
     public static final PasswordMismatchException EXCEPTION = new PasswordMismatchException();
 

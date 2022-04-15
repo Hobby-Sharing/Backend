@@ -1,9 +1,9 @@
 package com.hobby.sharing.global.security.exception;
 
 import com.hobby.sharing.global.error.ErrorCode;
-import com.hobby.sharing.global.error.exception.BasicException;
+import com.hobby.sharing.global.error.exception.GlobalException;
 
-public class InvalidTokenException extends BasicException {
+public class InvalidTokenException extends GlobalException {
 
     public static final InvalidTokenException EXCEPTION = new InvalidTokenException();
 

@@ -1,9 +1,9 @@
 package com.hobby.sharing.domain.profile.exception;
 
 import com.hobby.sharing.global.error.ErrorCode;
-import com.hobby.sharing.global.error.exception.BasicException;
+import com.hobby.sharing.global.error.exception.GlobalException;
 
-public class ProfileAlreadyExistsException extends BasicException {
+public class ProfileAlreadyExistsException extends GlobalException {
 
     public static final ProfileAlreadyExistsException EXCEPTION = new ProfileAlreadyExistsException();
 

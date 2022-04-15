@@ -1,9 +1,9 @@
 package com.hobby.sharing.domain.user.exception;
 
 import com.hobby.sharing.global.error.ErrorCode;
-import com.hobby.sharing.global.error.exception.BasicException;
+import com.hobby.sharing.global.error.exception.GlobalException;
 
-public class UserAlreadyExistsException extends BasicException {
+public class UserAlreadyExistsException extends GlobalException {
 
     public static final UserAlreadyExistsException EXCEPTION = new UserAlreadyExistsException();
 
