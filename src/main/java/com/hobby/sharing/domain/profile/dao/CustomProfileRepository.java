@@ -16,7 +16,7 @@ public class CustomProfileRepository {
 
     private final JPAQueryFactory jpaQueryFactory;
 
-    public ProfileDetailsInfoResponse getProfileDetailsInfo() {
+    public ProfileDetailsInfoResponse getProfileDetailsInfo(Long userId) {
         return jpaQueryFactory
                 .select(constructor(ProfileDetailsInfoResponse.class,
                         user.email,
@@ -27,6 +27,7 @@ public class CustomProfileRepository {
                         user.address.roadNameAddress))
                 .from(user)
                 .leftJoin(profile).on(profile.user.id.eq(user.id))
+                .where(user.id.eq(userId))
                 .fetchOne();
     }
 }
