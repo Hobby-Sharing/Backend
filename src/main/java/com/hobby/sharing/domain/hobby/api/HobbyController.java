@@ -47,7 +47,7 @@ public class HobbyController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/hobby/unlike") @PreAuthorize("isAuthenticated()")
+    @DeleteMapping("/hobby/like") @PreAuthorize("isAuthenticated()")
     public void hobbyUnlike(@RequestBody LikeHobbyRequest request) {
         hobbyUnlikeService.execute(request);
     }

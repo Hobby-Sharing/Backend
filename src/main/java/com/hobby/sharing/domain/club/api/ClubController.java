@@ -54,7 +54,7 @@ public class ClubController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/club/join") @PreAuthorize("isAuthenticated()")
+    @DeleteMapping("/club/member") @PreAuthorize("isAuthenticated()")
     public void deleteClubMember(@RequestBody @Valid ClubRequest request) {
         deleteClubMemberService.execute(request);
     }
