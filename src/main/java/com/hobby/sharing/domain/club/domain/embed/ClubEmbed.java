@@ -11,7 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Embeddable
-public class ClubId implements Serializable {
+public class ClubEmbed implements Serializable {
 
     @Column(name = "user_id", nullable = false)
     private Long userId;
