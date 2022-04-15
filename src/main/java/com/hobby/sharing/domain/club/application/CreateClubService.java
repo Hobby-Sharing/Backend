@@ -1,5 +1,6 @@
 package com.hobby.sharing.domain.club.application;
 
+import com.hobby.sharing.domain.club.application.facade.ClubFacade;
 import com.hobby.sharing.domain.club.dao.ClubMemberRepository;
 import com.hobby.sharing.domain.club.dao.ClubRepository;
 import com.hobby.sharing.domain.club.domain.Club;
@@ -35,7 +36,7 @@ public class CreateClubService {
                 .hobby(hobby)
                 .managerEmail(user.getEmail())
                 .build();
-        clubFacade.checkClubNameExists(club.getName());
+        clubFacade.checkClubNameNotExists(club.getName());
         clubRepository.save(club);
 
         ClubMember clubMember = ClubMember.builder()
