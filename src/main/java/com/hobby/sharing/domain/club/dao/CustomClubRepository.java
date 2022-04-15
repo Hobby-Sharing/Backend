@@ -33,7 +33,7 @@ public class CustomClubRepository {
                 .from(hobby)
                 .join(club).on(club.hobby.id.eq(hobby.id))
                 .join(likeHobby).on(likeHobby.user.id.eq(userId)
-                                .and(likeHobby.hobby.id.eq(hobby.id)))
+                        .and(likeHobby.hobby.id.eq(hobby.id)))
                 .orderBy(hobby.name.asc())
                 .fetch();
     }

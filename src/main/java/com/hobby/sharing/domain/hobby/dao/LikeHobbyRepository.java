@@ -9,6 +9,8 @@ import java.util.UUID;
 
 public interface LikeHobbyRepository extends CrudRepository<LikeHobby, Long> {
     List<LikeHobby> findAllByUserId(Long userId, Sort sort);
+
     boolean existsByHobbyIdAndUserId(UUID hobbyId, Long userId);
+
     void deleteByHobbyIdAndUserId(UUID hobbyId, Long userId);
 }

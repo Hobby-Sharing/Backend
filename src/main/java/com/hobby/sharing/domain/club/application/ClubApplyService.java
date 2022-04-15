@@ -17,7 +17,7 @@ public class ClubApplyService {
 
     private final AuthFacade authFacade;
     private final ClubFacade clubFacade;
-    
+
     private final ClubRepository clubRepository;
     private final ClubDetailRepository clubDetailRepository;
 

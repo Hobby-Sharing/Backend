@@ -7,7 +7,7 @@ public class HobbyNotFoundException extends BasicException {
 
     public static final HobbyNotFoundException EXCEPTION = new HobbyNotFoundException();
 
-    private HobbyNotFoundException(){
+    private HobbyNotFoundException() {
         super(ErrorCode.HOBBY_NOT_FOUND);
     }
 }

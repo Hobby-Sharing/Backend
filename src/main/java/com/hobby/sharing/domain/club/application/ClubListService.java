@@ -13,7 +13,6 @@ import java.util.List;
 @Service
 public class ClubListService {
 
-
     private final AuthFacade authFacade;
     private final CustomClubRepository customClubRepository;
 

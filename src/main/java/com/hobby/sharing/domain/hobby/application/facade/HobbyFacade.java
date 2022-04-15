@@ -21,7 +21,7 @@ public class HobbyFacade {
     }
 
     public void checkLikeHobbyExists(UUID hobbyId, Long userId) {
-        if(!likeHobbyRepository.existsByHobbyIdAndUserId(hobbyId, userId)) {
+        if (!likeHobbyRepository.existsByHobbyIdAndUserId(hobbyId, userId)) {
             throw LikeHobbyNotFoundException.EXCEPTION;
         }
     }

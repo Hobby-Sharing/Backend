@@ -2,11 +2,11 @@ package com.hobby.sharing.domain.user.application;
 
 import com.hobby.sharing.domain.profile.dao.ProfileRepository;
 import com.hobby.sharing.domain.profile.domain.Profile;
+import com.hobby.sharing.domain.user.application.facade.UserFacade;
 import com.hobby.sharing.domain.user.dao.UserRepository;
 import com.hobby.sharing.domain.user.domain.User;
 import com.hobby.sharing.domain.user.dto.request.UserSignUpRequest;
 import com.hobby.sharing.domain.user.dto.response.UserTokenResponse;
-import com.hobby.sharing.domain.user.application.facade.UserFacade;
 import com.hobby.sharing.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

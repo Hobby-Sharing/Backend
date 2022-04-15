@@ -30,13 +30,13 @@ public class TokenRefreshService {
     }
 
     private void checkRefreshToken(Claims tokenBody) {
-        if(!jwtTokenProvider.isRefreshToken(tokenBody)) {
+        if (!jwtTokenProvider.isRefreshToken(tokenBody)) {
             throw TokenRefreshException.EXCEPTION;
         }
     }
 
     private void userExistsByEmail(String email) {
-        if(!userRepository.existsByEmail(email)) {
+        if (!userRepository.existsByEmail(email)) {
             throw TokenRefreshException.EXCEPTION;
         }
     }

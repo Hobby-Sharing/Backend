@@ -23,6 +23,7 @@ public class CreateClubService {
 
     private final AuthFacade authFacade;
     private final ClubFacade clubFacade;
+
     private final ClubRepository clubRepository;
     private final HobbyRepository hobbyRepository;
     private final ClubMemberRepository clubMemberRepository;
