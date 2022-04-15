@@ -9,20 +9,22 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
 @RequiredArgsConstructor
 @Service
 public class HobbyUnlikeService {
 
     private final AuthFacade authFacade;
     private final HobbyFacade hobbyFacade;
+
     private final LikeHobbyRepository likeHobbyRepository;
 
     @Transactional
     public void execute(LikeHobbyRequest request) {
         User user = authFacade.getUser();
 
-        hobbyFacade.checkLikeHobbyExists(request.getHobbyId(), user.getId());
-
-        likeHobbyRepository.deleteByHobbyIdAndUserId(request.getHobbyId(), user.getId());
+        hobbyFacade.checkLikeHobbyExists(UUID.fromString(request.getHobbyId()), user.getId());
+        likeHobbyRepository.deleteByHobbyIdAndUserId(UUID.fromString(request.getHobbyId()), user.getId());
     }
 }

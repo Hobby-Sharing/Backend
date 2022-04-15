@@ -15,6 +15,8 @@ import com.hobby.sharing.global.security.auth.facade.AuthFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @RequiredArgsConstructor
 @Service
 public class CreateClubService {
@@ -27,7 +29,7 @@ public class CreateClubService {
 
     public void execute(CreateClubRequest request) {
         User user = authFacade.getUser();
-        Hobby hobby = hobbyRepository.findById(request.getHobbyId())
+        Hobby hobby = hobbyRepository.findById(UUID.fromString(request.getHobbyId()))
                 .orElseThrow(() -> HobbyNotFoundException.EXCEPTION);
 
         Club club = Club.builder()

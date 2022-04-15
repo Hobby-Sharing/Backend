@@ -5,13 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
-import java.util.UUID;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CreateClubRequest {
 
-    private UUID hobbyId;
+    private String hobbyId;
 
     @NotBlank
     private String name;

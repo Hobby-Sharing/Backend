@@ -12,6 +12,8 @@ import com.hobby.sharing.global.security.auth.facade.AuthFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 
 @RequiredArgsConstructor
 @Service
@@ -24,7 +26,7 @@ public class HobbyLikeService {
 
     public void execute(LikeHobbyRequest request) {
         User user = authFacade.getUser();
-        Hobby hobby = hobbyRepository.findById(request.getHobbyId())
+        Hobby hobby = hobbyRepository.findById(UUID.fromString(request.getHobbyId()))
                 .orElseThrow(() -> HobbyNotFoundException.EXCEPTION);
 
         LikeHobby likeHobby = LikeHobby.builder()
