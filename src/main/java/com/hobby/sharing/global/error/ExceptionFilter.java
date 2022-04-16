@@ -22,9 +22,9 @@ public class ExceptionFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
         } catch (GlobalException e) {
 
-            String jsonErrorResponse = objectMapper.writeValueAsString(e.getErrorResponse());
+            String jsonErrorResponse = objectMapper.writeValueAsString(e.getErrorCode());
 
-            response.setStatus(e.getErrorResponse().getStatus());
+            response.setStatus(e.getErrorCode().getStatus());
             response.setContentType("application/json");
             response.getWriter().write(jsonErrorResponse);
         }

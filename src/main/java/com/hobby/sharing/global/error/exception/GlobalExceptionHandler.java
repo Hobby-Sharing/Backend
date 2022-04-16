@@ -49,7 +49,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     protected ResponseEntity<BasicErrorResponse> handleException(Exception e) {
+        e.printStackTrace();
         final BasicErrorResponse response = new BasicErrorResponse(INTERNAL_SERVER_ERROR);
-        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(response, HttpStatus.valueOf(INTERNAL_SERVER_ERROR.getStatus()));
     }
 }
