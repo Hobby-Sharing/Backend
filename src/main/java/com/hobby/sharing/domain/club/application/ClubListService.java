@@ -14,6 +14,7 @@ import java.util.List;
 public class ClubListService {
 
     private final AuthFacade authFacade;
+
     private final CustomClubRepository customClubRepository;
 
     public List<ClubListResponse> execute() {

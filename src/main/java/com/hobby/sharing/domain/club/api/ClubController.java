@@ -23,7 +23,6 @@ public class ClubController {
     private final DeleteClubApplyService deleteClubApplyService;
     private final DeleteClubMemberService deleteClubMemberService;
 
-
     @GetMapping("/club") @PreAuthorize("isAuthenticated()")
     public List<ClubListResponse> getClubList() {
         return clubListService.execute();
