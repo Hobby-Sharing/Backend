@@ -1,7 +1,5 @@
 package com.hobby.sharing.global.config.cache;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -15,27 +13,23 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.time.Duration;
 
-@RequiredArgsConstructor
 @Configuration
 @EnableCaching
 public class CacheConfig {
 
-    private final ObjectMapper objectMapper;
-    private final RedisConnectionFactory connectionFactory;
-
     @Bean
-    public CacheManager cacheManager() {
-        RedisCacheConfiguration redisConfiguration = RedisCacheConfiguration.defaultCacheConfig()
-                .serializeKeysWith(RedisSerializationContext.SerializationPair.
-                        fromSerializer(new StringRedisSerializer()))
+    public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
+        RedisCacheConfiguration redisConfig = RedisCacheConfiguration.defaultCacheConfig()
+                .serializeKeysWith(RedisSerializationContext.SerializationPair
+                        .fromSerializer(new StringRedisSerializer()))
                 .serializeValuesWith(RedisSerializationContext.SerializationPair
-                        .fromSerializer(new GenericJackson2JsonRedisSerializer(objectMapper)))
+                        .fromSerializer(new GenericJackson2JsonRedisSerializer()))
                 .disableCachingNullValues()
-                .entryTtl(Duration.ofSeconds(180));
+                .entryTtl(Duration.ofMinutes(3L));
 
         return RedisCacheManager.RedisCacheManagerBuilder
                 .fromConnectionFactory(connectionFactory)
-                .cacheDefaults(redisConfiguration)
+                .cacheDefaults(redisConfig)
                 .build();
     }
 }
