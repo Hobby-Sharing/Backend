@@ -3,7 +3,6 @@ package com.hobby.sharing.domain.profile.api;
 import com.hobby.sharing.domain.profile.application.ProfileChangeService;
 import com.hobby.sharing.domain.profile.application.ProfileDetailsInfoService;
 import com.hobby.sharing.domain.profile.dto.request.ProfileChangeRequest;
-import com.hobby.sharing.domain.profile.dto.request.ProfileRegistrationRequest;
 import com.hobby.sharing.domain.profile.dto.response.ProfileDetailsInfoResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,8 +15,8 @@ import javax.validation.Valid;
 @RestController
 public class ProfileController {
 
-    private final ProfileDetailsInfoService profileDetailsInfoService;
     private final ProfileChangeService profileChangeService;
+    private final ProfileDetailsInfoService profileDetailsInfoService;
 
     @GetMapping("/profile") @PreAuthorize("isAuthenticated()")
     public ProfileDetailsInfoResponse getProfileDetails() {
