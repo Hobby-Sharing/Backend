@@ -18,8 +18,8 @@ public class ClubController {
 
     private final JoinClubService joinClubService;
     private final ClubListService clubListService;
-    private final CreateClubService createClubService;
     private final ClubApplyService clubApplyService;
+    private final CreateClubService createClubService;
     private final DeleteClubApplyService deleteClubApplyService;
     private final DeleteClubMemberService deleteClubMemberService;
 

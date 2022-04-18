@@ -16,6 +16,7 @@ import java.util.List;
 public class SearchLikeHobbyService {
 
     private final AuthFacade authFacade;
+
     private final LikeHobbyRepository likeHobbyRepository;
 
     @Transactional(readOnly = true)

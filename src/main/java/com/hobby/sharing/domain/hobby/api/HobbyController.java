@@ -18,15 +18,15 @@ import java.util.List;
 @RestController
 public class HobbyController {
 
+    private final HobbyLikeService hobbyLikeService;
     private final HobbyUnlikeService hobbyUnlikeService;
     private final SearchAllHobbyService searchAllHobbyService;
     private final SearchHobbyNameService searchHobbyNameService;
-    private final HobbyLikeService hobbyLikeService;
     private final SearchLikeHobbyService searchLikeHobbyService;
 
     @GetMapping("/hobby")
     public List<HobbyResponse> getHobbyList(@RequestParam("page") @Min(0) int page,
-                                         @RequestParam("size") @Min(1) @Max(50) int size) {
+                                            @RequestParam("size") @Min(1) @Max(50) int size) {
         return searchAllHobbyService.execute(new PagingRequest(page-1, size));
     }
 
