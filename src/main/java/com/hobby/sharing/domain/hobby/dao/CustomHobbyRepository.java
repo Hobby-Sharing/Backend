@@ -32,7 +32,6 @@ public class CustomHobbyRepository {
                 .fetch();
     }
 
-
     public List<LikeHobbyResponse> getAllLikeHobby(Long userId) {
         return jpaQueryFactory
                 .select(constructor(LikeHobbyResponse.class,
