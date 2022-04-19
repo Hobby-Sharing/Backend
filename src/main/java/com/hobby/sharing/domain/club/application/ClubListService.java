@@ -2,7 +2,6 @@ package com.hobby.sharing.domain.club.application;
 
 import com.hobby.sharing.domain.club.dao.CustomClubRepository;
 import com.hobby.sharing.domain.club.dto.response.ClubListResponse;
-import com.hobby.sharing.domain.user.domain.User;
 import com.hobby.sharing.global.security.auth.facade.AuthFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
@@ -22,7 +21,7 @@ public class ClubListService {
 
     @Cacheable(value = "club", key = "#root.target.CLUB_LIST", cacheManager = "cacheManager")
     public List<ClubListResponse> execute() {
-        User user = authFacade.getUser();
-        return customClubRepository.getClubList(user.getId());
+        Long userId = authFacade.getUser().getId();
+        return customClubRepository.getClubList(userId);
     }
 }

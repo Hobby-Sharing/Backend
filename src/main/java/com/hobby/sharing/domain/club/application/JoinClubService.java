@@ -1,7 +1,7 @@
 package com.hobby.sharing.domain.club.application;
 
 import com.hobby.sharing.domain.club.application.facade.ClubFacade;
-import com.hobby.sharing.domain.club.dao.ClubDetailRepository;
+import com.hobby.sharing.domain.club.dao.ClubApplyRepository;
 import com.hobby.sharing.domain.club.dao.ClubMemberRepository;
 import com.hobby.sharing.domain.club.dao.ClubRepository;
 import com.hobby.sharing.domain.club.domain.Club;
@@ -25,7 +25,7 @@ public class JoinClubService {
     private final UserRepository userRepository;
     private final ClubRepository clubRepository;
     private final ClubMemberRepository clubMemberRepository;
-    private final ClubDetailRepository clubDetailRepository;
+    private final ClubApplyRepository clubApplyRepository;
 
     public void execute(ClubRequest request) {
         clubFacade.checkClubAdmin(request.getClubId());
@@ -42,11 +42,11 @@ public class JoinClubService {
                 .role(ClubRole.USER)
                 .build();
         clubMemberRepository.save(clubMember);
-        deleteClubDetail(user.getId(), club.getId());
+        deleteClubApply(user.getId(), club.getId());
     }
 
-    private void deleteClubDetail(Long userId, Long clubId) {
+    private void deleteClubApply(Long userId, Long clubId) {
         ClubEmbed clubEmbed = new ClubEmbed(userId, clubId);
-        clubDetailRepository.deleteById(clubEmbed);
+        clubApplyRepository.deleteById(clubEmbed);
     }
 }

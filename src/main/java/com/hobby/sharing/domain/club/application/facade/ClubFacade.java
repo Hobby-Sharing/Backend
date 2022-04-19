@@ -31,26 +31,26 @@ public class ClubFacade {
         }
     }
 
-    public void checkClubDetailExists(Long userId, Long clubId) {
-        if (!customClubRepository.existsClubDetail(userId, clubId)) {
-            throw ClubDetailNotFoundException.EXCEPTION;
+    public void checkClubApplyExists(Long userId, Long clubId) {
+        if (!customClubRepository.existsClubApply(userId, clubId)) {
+            throw ClubApplylNotFoundException.EXCEPTION;
         }
     }
 
     public void checkClubApplyCondition(Long userId, Long clubId) {
         checkClubMemberNotExists(userId, clubId);
-        checkClubDetailNotExists(userId, clubId);
+        checkClubApplyNotExists(userId, clubId);
     }
 
-    private void checkClubDetailNotExists(Long userId, Long clubId) {
-        if (customClubRepository.existsClubDetail(userId, clubId)) {
-            throw ClubDetailAlreadyExistsException.EXCEPTION;
+    private void checkClubApplyNotExists(Long userId, Long clubId) {
+        if (customClubRepository.existsClubApply(userId, clubId)) {
+            throw ClubApplyAlreadyExistsException.EXCEPTION;
         }
     }
 
     public void checkClubJoinCondition(Long userId, Long clubId) {
         checkClubMemberNotExists(userId, clubId);
-        checkClubDetailApplyExists(userId, clubId);
+        checkClubApplyApplyExists(userId, clubId);
     }
 
     private void checkClubMemberNotExists(Long userId, Long clubId) {
@@ -59,9 +59,9 @@ public class ClubFacade {
         }
     }
 
-    private void checkClubDetailApplyExists(Long userId, Long clubId) {
-        if (!customClubRepository.existsClubDetail(userId, clubId)) {
-            throw ClubDetailNotFoundException.EXCEPTION;
+    private void checkClubApplyApplyExists(Long userId, Long clubId) {
+        if (!customClubRepository.existsClubApply(userId, clubId)) {
+            throw ClubApplylNotFoundException.EXCEPTION;
         }
     }
 

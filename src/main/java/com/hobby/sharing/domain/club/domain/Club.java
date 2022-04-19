@@ -42,6 +42,6 @@ public class Club extends BaseTime {
     }
 
     @OneToMany(mappedBy = "club", cascade = CascadeType.REMOVE)
-    private List<ClubDetail> clubDetailList;
+    private List<ClubApply> clubApplyList;
 
 }
