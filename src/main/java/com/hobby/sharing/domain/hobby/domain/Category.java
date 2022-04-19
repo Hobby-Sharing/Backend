@@ -1,6 +1,6 @@
 package com.hobby.sharing.domain.hobby.domain;
 
-import com.hobby.sharing.domain.model.BaseTime;
+import com.hobby.sharing.global.model.BaseTimeEntity;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Entity @Table(name = "category")
-public class Category extends BaseTime {
+public class Category extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -2,7 +2,7 @@ package com.hobby.sharing.domain.club.domain;
 
 import com.hobby.sharing.domain.club.domain.embed.ClubEmbed;
 import com.hobby.sharing.domain.club.domain.role.ClubRole;
-import com.hobby.sharing.domain.model.BaseClubMember;
+import com.hobby.sharing.global.model.BaseClubMember;
 import com.hobby.sharing.domain.user.domain.User;
 import lombok.Builder;
 import lombok.Getter;

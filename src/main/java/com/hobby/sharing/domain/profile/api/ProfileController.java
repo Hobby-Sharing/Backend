@@ -25,7 +25,7 @@ public class ProfileController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/profile") @PreAuthorize("isAuthenticated()")
-    public void profileChange(@Valid @RequestBody ProfileChangeRequest request) {
+    public void profileChange(@RequestBody @Valid ProfileChangeRequest request) {
         profileChangeService.execute(request);
     }
 }

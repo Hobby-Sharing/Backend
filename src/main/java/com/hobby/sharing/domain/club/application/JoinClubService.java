@@ -42,6 +42,7 @@ public class JoinClubService {
                 .role(ClubRole.USER)
                 .build();
         clubMemberRepository.save(clubMember);
+
         deleteClubApply(user.getId(), club.getId());
     }
 

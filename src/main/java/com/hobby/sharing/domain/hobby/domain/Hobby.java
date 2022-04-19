@@ -1,7 +1,7 @@
 package com.hobby.sharing.domain.hobby.domain;
 
 import com.hobby.sharing.domain.club.domain.Club;
-import com.hobby.sharing.domain.model.BaseTime;
+import com.hobby.sharing.global.model.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +15,7 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity @Table(name = "hobby")
-public class Hobby extends BaseTime {
+public class Hobby extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(generator = "uuid2")

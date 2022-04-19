@@ -10,5 +10,4 @@ public class ClubAdminException extends GlobalException {
     private ClubAdminException() {
         super(ErrorCode.NOT_CLUB_ADMIN);
     }
-
 }

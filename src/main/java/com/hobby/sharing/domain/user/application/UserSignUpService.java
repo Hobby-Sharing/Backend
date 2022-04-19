@@ -18,8 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserSignUpService {
 
     private final UserFacade userFacade;
+
     private final UserRepository userRepository;
     private final ProfileRepository profileRepository;
+
     private final JwtTokenProvider jwtTokenProvider;
     private final PasswordEncoder passwordEncoder;
 

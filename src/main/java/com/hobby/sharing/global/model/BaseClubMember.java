@@ -1,4 +1,4 @@
-package com.hobby.sharing.domain.model;
+package com.hobby.sharing.global.model;
 
 import com.hobby.sharing.domain.club.domain.Club;
 import com.hobby.sharing.domain.club.domain.embed.ClubEmbed;

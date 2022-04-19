@@ -33,7 +33,7 @@ public class ClubFacade {
 
     public void checkClubApplyExists(Long userId, Long clubId) {
         if (!customClubRepository.existsClubApply(userId, clubId)) {
-            throw ClubApplylNotFoundException.EXCEPTION;
+            throw ClubApplyNotFoundException.EXCEPTION;
         }
     }
 
@@ -61,7 +61,7 @@ public class ClubFacade {
 
     private void checkClubApplyApplyExists(Long userId, Long clubId) {
         if (!customClubRepository.existsClubApply(userId, clubId)) {
-            throw ClubApplylNotFoundException.EXCEPTION;
+            throw ClubApplyNotFoundException.EXCEPTION;
         }
     }
 

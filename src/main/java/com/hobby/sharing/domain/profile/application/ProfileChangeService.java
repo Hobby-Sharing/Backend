@@ -15,15 +15,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProfileChangeService {
 
     private final AuthFacade authFacade;
+
     private final ProfileRepository profileRepository;
 
     @Transactional
     public void execute(ProfileChangeRequest request) {
         User user = authFacade.getUser();
-        user.updateUserProfile(request.getName(), request.getZipCode(), request.getRoadNameAddress());
-
         Profile profile = profileRepository.findByUser(user)
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
+
+        user.updateUserProfile(request.getName(), request.getZipCode(), request.getRoadNameAddress());
         profile.updateProfile(request.getProfileImageUrl(), request.getStatusMessage());
     }
 }
