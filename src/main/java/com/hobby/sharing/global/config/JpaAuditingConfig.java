@@ -9,7 +9,6 @@ import java.util.TimeZone;
 @Configuration
 @EnableJpaAuditing
 public class JpaAuditingConfig {
-
     @PostConstruct
     private void started() {
         TimeZone.setDefault(TimeZone.getTimeZone("Asia/Seoul"));

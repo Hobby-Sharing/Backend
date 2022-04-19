@@ -1,7 +1,7 @@
 package com.hobby.sharing.domain.club.domain;
 
 import com.hobby.sharing.domain.hobby.domain.Hobby;
-import com.hobby.sharing.domain.model.BaseTime;
+import com.hobby.sharing.global.model.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity @Table(name = "club")
-public class Club extends BaseTime {
+public class Club extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,6 +42,5 @@ public class Club extends BaseTime {
     }
 
     @OneToMany(mappedBy = "club", cascade = CascadeType.REMOVE)
-    private List<ClubDetail> clubDetailList;
-
+    private List<ClubApply> clubApplyList;
 }

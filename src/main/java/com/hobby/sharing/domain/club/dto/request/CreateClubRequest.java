@@ -9,10 +9,11 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CreateClubRequest {
+
     private String hobbyId;
 
     @NotBlank
     private String name;
-
+    
     private String introMessage;
 }

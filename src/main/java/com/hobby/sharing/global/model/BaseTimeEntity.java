@@ -1,4 +1,4 @@
-package com.hobby.sharing.domain.model;
+package com.hobby.sharing.global.model;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
 @Getter
-public class BaseTime {
+public class BaseTimeEntity {
 
     @CreatedDate
     @Column(updatable = false)
@@ -21,5 +21,4 @@ public class BaseTime {
 
     @LastModifiedDate
     private LocalDateTime modifiedDate;
-
 }

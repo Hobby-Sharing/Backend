@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 import static com.hobby.sharing.domain.club.domain.QClub.club;
-import static com.hobby.sharing.domain.club.domain.QClubDetail.clubDetail;
+import static com.hobby.sharing.domain.club.domain.QClubApply.clubApply;
 import static com.hobby.sharing.domain.club.domain.QClubMember.clubMember;
 import static com.hobby.sharing.domain.hobby.domain.QHobby.hobby;
 import static com.hobby.sharing.domain.hobby.domain.QLikeHobby.likeHobby;
@@ -38,12 +38,12 @@ public class CustomClubRepository {
                 .fetch();
     }
 
-    public boolean existsClubDetail(Long userId, Long clubId) {
+    public boolean existsClubApply(Long userId, Long clubId) {
         return jpaQueryFactory
                 .selectOne()
-                .from(clubDetail)
-                .where(clubDetail.user.id.eq(userId)
-                        .and(clubDetail.club.id.eq(clubId)))
+                .from(clubApply)
+                .where(clubApply.user.id.eq(userId)
+                        .and(clubApply.club.id.eq(clubId)))
                 .fetchFirst() != null;
     }
 

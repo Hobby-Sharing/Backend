@@ -1,6 +1,6 @@
 package com.hobby.sharing.domain.user.application;
 
-import com.hobby.sharing.domain.user.dao.UserRepository;
+import com.hobby.sharing.domain.user.application.facade.UserFacade;
 import com.hobby.sharing.domain.user.dto.request.TokenRefreshRequest;
 import com.hobby.sharing.domain.user.dto.response.TokenRefreshResponse;
 import com.hobby.sharing.global.security.exception.TokenRefreshException;
@@ -13,7 +13,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class TokenRefreshService {
 
-    private final UserRepository userRepository;
+    private final UserFacade userFacade;
+
     private final JwtTokenProvider jwtTokenProvider;
 
     public TokenRefreshResponse execute(TokenRefreshRequest request) {
@@ -23,7 +24,7 @@ public class TokenRefreshService {
         checkRefreshToken(tokenBody);
 
         String email = jwtTokenProvider.getEmail(tokenBody);
-        userExistsByEmail(email);
+        userFacade.checkUserExistsByEmail(email);
 
         String accessToken = jwtTokenProvider.generateAccessToken(email);
         return new TokenRefreshResponse(accessToken);
@@ -31,12 +32,6 @@ public class TokenRefreshService {
 
     private void checkRefreshToken(Claims tokenBody) {
         if (!jwtTokenProvider.isRefreshToken(tokenBody)) {
-            throw TokenRefreshException.EXCEPTION;
-        }
-    }
-
-    private void userExistsByEmail(String email) {
-        if (!userRepository.existsByEmail(email)) {
             throw TokenRefreshException.EXCEPTION;
         }
     }

@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserLoginService {
 
     private final UserFacade userFacade;
+
     private final JwtTokenProvider jwtTokenProvider;
 
     @Transactional(rollbackFor = Exception.class)

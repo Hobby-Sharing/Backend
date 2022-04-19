@@ -28,10 +28,10 @@ public enum ErrorCode {
     LIKE_HOBBY_ALREADY_EXISTS(409, "HOBBY-409-1", "Hobby already like"),
 
     CLUB_NOT_FOUND(404, "CLUB-404-1", "Club Not Found"),
-    CLUB_DETAIL_NOT_FOUND(404, "CLUB_404-2", "Club Detail Not Found"),
+    CLUB_APPLY_NOT_FOUND(404, "CLUB_404-2", "Club Apply Not Found"),
     CLUB_MEMBER_NOT_FOUND(404, "CLUB_404-3", "Club Member Not Found"),
     CLUB_ALREADY_EXISTS(409, "CLUB-409-1", "Club name already exists"),
-    CLUB_DETAIL_ALREADY_EXISTS(409, "CLUB-409-2", "Club detail already exists"),
+    CLUB_APPLY_ALREADY_EXISTS(409, "CLUB-409-2", "Club apply already exists"),
     CLUB_MEMBER_ALREADY_EXISTS(409, "CLUB-409-3", "Club member already exists"),
 
     PROFILE_ALREADY_EXISTS(409, "PROFILE-409-1", "This is a registered profile");
