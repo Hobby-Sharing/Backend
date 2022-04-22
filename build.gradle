@@ -74,6 +74,8 @@ dependencies {
     implementation 'org.codehaus.groovy:groovy'
     testImplementation 'org.spockframework:spock-spring:2.1-groovy-3.0'
     testImplementation 'org.spockframework:spock-core:2.1-groovy-3.0'
+
+    implementation 'org.json:json:20220320'
 }
 
 dependencyManagement {

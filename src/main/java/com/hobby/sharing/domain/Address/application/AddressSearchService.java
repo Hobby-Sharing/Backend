@@ -3,9 +3,9 @@ package com.hobby.sharing.domain.Address.application;
 import com.hobby.sharing.domain.Address.exception.AddressSearchFailedException;
 import com.hobby.sharing.global.util.client.KakaoLocalClient;
 import lombok.RequiredArgsConstructor;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.configurationprocessor.json.JSONArray;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
