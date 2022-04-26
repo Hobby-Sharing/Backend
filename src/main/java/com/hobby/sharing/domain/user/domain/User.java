@@ -1,6 +1,7 @@
 package com.hobby.sharing.domain.user.domain;
 
 import com.hobby.sharing.domain.Address.domain.Address;
+import com.hobby.sharing.domain.club.domain.ClubApply;
 import com.hobby.sharing.domain.club.domain.ClubMember;
 import com.hobby.sharing.domain.hobby.domain.LikeHobby;
 import com.hobby.sharing.domain.profile.domain.Profile;
@@ -55,6 +56,9 @@ public class User extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<LikeHobby> likeHobbyList;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<ClubApply> clubApplyList;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<ClubMember> clubMemberList;
