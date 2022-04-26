@@ -50,18 +50,12 @@ public class ClubFacade {
 
     public void checkClubJoinCondition(Long userId, Long clubId) {
         checkClubMemberNotExists(userId, clubId);
-        checkClubApplyApplyExists(userId, clubId);
+        checkClubApplyExists(userId, clubId);
     }
 
     private void checkClubMemberNotExists(Long userId, Long clubId) {
         if (customClubRepository.existsClubMember(userId, clubId)) {
             throw ClubMemberAlreadyExistsException.EXCEPTION;
-        }
-    }
-
-    private void checkClubApplyApplyExists(Long userId, Long clubId) {
-        if (!customClubRepository.existsClubApply(userId, clubId)) {
-            throw ClubApplyNotFoundException.EXCEPTION;
         }
     }
 
