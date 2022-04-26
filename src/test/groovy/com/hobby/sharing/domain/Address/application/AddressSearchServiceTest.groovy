@@ -15,10 +15,10 @@ class AddressSearchServiceTest extends Specification {
 
     def "Address Search Service"() {
         given:
-        kakaoLocalClient.searchAddress() >> { throw new Exception() }
+        kakaoLocalClient.searchAddress("apiKey", "keyword") >> { throw new Exception() }
 
         when:
-        addressSearchService.execute()
+        addressSearchService.execute("keyword")
 
         then:
         thrown(AddressSearchFailedException)

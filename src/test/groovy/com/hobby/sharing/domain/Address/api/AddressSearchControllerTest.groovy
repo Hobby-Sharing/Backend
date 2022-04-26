@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.ResultActions
 import spock.lang.Specification
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
@@ -18,10 +19,10 @@ class AddressSearchControllerTest extends Specification {
     @Autowired
     MockMvc mvc
 
-    def "SearchAddress"() {
+    def "Search Address"() {
         when:
-        def actions = mvc.perform(get("/address/search")
-                .param("keyword", "삼성동 100"))
+        ResultActions actions = mvc.perform(get("/address/search")
+                .param("keyword", "전북 삼성동 100"))
                 .andDo(print())
 
         then:
