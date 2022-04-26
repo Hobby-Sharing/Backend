@@ -16,12 +16,12 @@ public class BaseClubMember {
     @AttributeOverride(name = "clubId", column = @Column(name = "club_id"))
     protected ClubEmbed id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("userId")
     @JoinColumn(name = "user_id")
     protected User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("clubId")
     @JoinColumn(name = "club_id")
     protected Club club;
