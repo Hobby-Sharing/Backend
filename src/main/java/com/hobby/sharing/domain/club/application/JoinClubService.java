@@ -29,7 +29,8 @@ public class JoinClubService {
 
     public void execute(ClubRequest request) {
         clubFacade.checkClubAdmin(request.getClubId());
-        clubFacade.checkClubJoinCondition(request.getUserId(), request.getClubId());
+        clubFacade.checkClubApplyExists(request.getUserId(), request.getClubId());
+        clubFacade.checkClubMemberNotExists(request.getUserId(), request.getClubId());
 
         User user = userRepository.findById(request.getUserId())
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);

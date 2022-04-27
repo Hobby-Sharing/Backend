@@ -37,23 +37,13 @@ public class ClubFacade {
         }
     }
 
-    public void checkClubApplyCondition(Long userId, Long clubId) {
-        checkClubMemberNotExists(userId, clubId);
-        checkClubApplyNotExists(userId, clubId);
-    }
-
-    private void checkClubApplyNotExists(Long userId, Long clubId) {
+    public void checkClubApplyNotExists(Long userId, Long clubId) {
         if (customClubRepository.existsClubApply(userId, clubId)) {
             throw ClubApplyAlreadyExistsException.EXCEPTION;
         }
     }
 
-    public void checkClubJoinCondition(Long userId, Long clubId) {
-        checkClubMemberNotExists(userId, clubId);
-        checkClubApplyExists(userId, clubId);
-    }
-
-    private void checkClubMemberNotExists(Long userId, Long clubId) {
+    public void checkClubMemberNotExists(Long userId, Long clubId) {
         if (customClubRepository.existsClubMember(userId, clubId)) {
             throw ClubMemberAlreadyExistsException.EXCEPTION;
         }
