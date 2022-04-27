@@ -26,7 +26,8 @@ public class ClubApplyService {
         Club club = clubRepository.findById(clubId)
                 .orElseThrow(() -> ClubNotFoundException.EXCEPTION);
 
-        clubFacade.checkClubApplyCondition(user.getId(), clubId);
+        clubFacade.checkClubMemberNotExists(user.getId(), clubId);
+        clubFacade.checkClubApplyNotExists(user.getId(), clubId);
 
         ClubApply clubApply = ClubApply.builder()
                 .user(user)
