@@ -5,15 +5,12 @@ import com.hobby.sharing.domain.club.dao.ClubRepository;
 import com.hobby.sharing.domain.club.dao.CustomClubRepository;
 import com.hobby.sharing.domain.club.domain.embed.ClubEmbed;
 import com.hobby.sharing.domain.club.exception.*;
-import com.hobby.sharing.global.security.auth.facade.AuthFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
 public class ClubFacade {
-
-    private final AuthFacade authFacade;
 
     private final ClubRepository clubRepository;
     private final CustomClubRepository customClubRepository;

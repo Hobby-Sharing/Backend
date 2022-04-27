@@ -4,13 +4,7 @@ import com.hobby.sharing.domain.club.dao.ClubMemberRepository
 import com.hobby.sharing.domain.club.dao.ClubRepository
 import com.hobby.sharing.domain.club.dao.CustomClubRepository
 import com.hobby.sharing.domain.club.domain.embed.ClubEmbed
-import com.hobby.sharing.domain.club.exception.ClubAdminException
-import com.hobby.sharing.domain.club.exception.ClubAlreadyExistsException
-import com.hobby.sharing.domain.club.exception.ClubApplyAlreadyExistsException
-import com.hobby.sharing.domain.club.exception.ClubApplyNotFoundException
-import com.hobby.sharing.domain.club.exception.ClubMemberAlreadyExistsException
-import com.hobby.sharing.domain.club.exception.ClubMemberNotFoundException
-import com.hobby.sharing.global.security.auth.facade.AuthFacade
+import com.hobby.sharing.domain.club.exception.*
 import spock.lang.Specification
 
 class ClubFacadeTest extends Specification {
@@ -19,14 +13,12 @@ class ClubFacadeTest extends Specification {
     private static final Long clubId = 1
 
     ClubFacade clubFacade
-    AuthFacade authFacade = Stub()
     ClubRepository clubRepository = Stub()
     CustomClubRepository customClubRepository = Stub()
     ClubMemberRepository clubMemberRepository = Stub()
 
     def setup() {
         clubFacade = new ClubFacade(
-                authFacade,
                 clubRepository,
                 customClubRepository,
                 clubMemberRepository)
