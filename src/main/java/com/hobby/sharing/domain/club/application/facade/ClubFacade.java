@@ -31,6 +31,12 @@ public class ClubFacade {
         }
     }
 
+    public void checkClubMemberNotExists(Long userId, Long clubId) {
+        if (customClubRepository.existsClubMember(userId, clubId)) {
+            throw ClubMemberAlreadyExistsException.EXCEPTION;
+        }
+    }
+
     public void checkClubApplyExists(Long userId, Long clubId) {
         if (!customClubRepository.existsClubApply(userId, clubId)) {
             throw ClubApplyNotFoundException.EXCEPTION;
@@ -40,12 +46,6 @@ public class ClubFacade {
     public void checkClubApplyNotExists(Long userId, Long clubId) {
         if (customClubRepository.existsClubApply(userId, clubId)) {
             throw ClubApplyAlreadyExistsException.EXCEPTION;
-        }
-    }
-
-    public void checkClubMemberNotExists(Long userId, Long clubId) {
-        if (customClubRepository.existsClubMember(userId, clubId)) {
-            throw ClubMemberAlreadyExistsException.EXCEPTION;
         }
     }
 
