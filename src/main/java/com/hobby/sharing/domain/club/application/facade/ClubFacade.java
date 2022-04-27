@@ -49,12 +49,7 @@ public class ClubFacade {
         }
     }
 
-    public void checkClubAdmin(Long clubId) {
-        Long myId = authFacade.getUser().getId();
-        checkClubAdminByUserId(myId, clubId);
-    }
-
-    private void checkClubAdminByUserId(Long userId, Long clubId) {
+    public void checkClubAdminByUserId(Long userId, Long clubId) {
         if (!customClubRepository.confirmClubAdmin(userId, clubId)) {
             throw ClubAdminException.EXCEPTION;
         }

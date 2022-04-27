@@ -13,6 +13,7 @@ import com.hobby.sharing.domain.club.exception.ClubNotFoundException;
 import com.hobby.sharing.domain.user.dao.UserRepository;
 import com.hobby.sharing.domain.user.domain.User;
 import com.hobby.sharing.domain.user.exception.UserNotFoundException;
+import com.hobby.sharing.global.security.auth.facade.AuthFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class JoinClubService {
 
+    private final AuthFacade authFacade;
     private final ClubFacade clubFacade;
 
     private final UserRepository userRepository;
@@ -28,7 +30,7 @@ public class JoinClubService {
     private final ClubApplyRepository clubApplyRepository;
 
     public void execute(ClubRequest request) {
-        clubFacade.checkClubAdmin(request.getClubId());
+        checkClubAdmin(request.getClubId());
         clubFacade.checkClubApplyExists(request.getUserId(), request.getClubId());
         clubFacade.checkClubMemberNotExists(request.getUserId(), request.getClubId());
 
@@ -50,5 +52,10 @@ public class JoinClubService {
     private void deleteClubApply(Long userId, Long clubId) {
         ClubEmbed clubEmbed = new ClubEmbed(userId, clubId);
         clubApplyRepository.deleteById(clubEmbed);
+    }
+
+    private void checkClubAdmin(Long clubId) {
+        Long myId = authFacade.getUser().getId();
+        clubFacade.checkClubAdminByUserId(myId, clubId);
     }
 }
