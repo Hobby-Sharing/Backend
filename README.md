@@ -30,3 +30,5 @@
 - QueryDSL
 - Redis
 - OpenFeign
+
+[API 명세](https://www.notion.so/API-60358ee2697242b19429caeabec00a2a)
