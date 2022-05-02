@@ -40,7 +40,7 @@ public class ClubController {
         clubApplyService.execute(clubId);
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     @DeleteMapping("/club/join-apply") @PreAuthorize("isAuthenticated()")
     public void deleteClubJoinApply(@RequestBody @Valid ClubRequest request) {
         deleteClubApplyService.execute(request);
@@ -52,7 +52,7 @@ public class ClubController {
         joinClubService.execute(request);
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     @DeleteMapping("/club/member") @PreAuthorize("isAuthenticated()")
     public void deleteClubMember(@RequestBody @Valid ClubRequest request) {
         deleteClubMemberService.execute(request);
