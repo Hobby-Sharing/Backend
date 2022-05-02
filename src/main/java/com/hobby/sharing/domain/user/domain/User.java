@@ -1,9 +1,11 @@
 package com.hobby.sharing.domain.user.domain;
 
 import com.hobby.sharing.domain.Address.domain.Address;
+import com.hobby.sharing.domain.club.domain.ClubApply;
+import com.hobby.sharing.domain.club.domain.ClubMember;
 import com.hobby.sharing.domain.hobby.domain.LikeHobby;
-import com.hobby.sharing.global.model.BaseTimeEntity;
 import com.hobby.sharing.domain.profile.domain.Profile;
+import com.hobby.sharing.global.model.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -49,10 +51,15 @@ public class User extends BaseTimeEntity {
         this.address = new Address(roadNameAddress, zipcode);
     }
     
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Profile profileList;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<LikeHobby> likeHobbyList;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<ClubApply> clubApplyList;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<ClubMember> clubMemberList;
 }

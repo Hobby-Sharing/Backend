@@ -43,4 +43,7 @@ public class Club extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "club", cascade = CascadeType.REMOVE)
     private List<ClubApply> clubApplyList;
+
+    @OneToMany(mappedBy = "club", cascade = CascadeType.REMOVE)
+    private List<ClubMember> clubMemberList;
 }
