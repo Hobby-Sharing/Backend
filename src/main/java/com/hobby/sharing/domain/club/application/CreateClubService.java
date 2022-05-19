@@ -26,8 +26,11 @@ public class CreateClubService {
     private final ClubRepository clubRepository;
     private final ClubMemberRepository clubMemberRepository;
 
+
     @CacheEvict(value = "club", allEntries = true)
     public void execute(CreateClubRequest request) {
+        clubFacade.checkClubNameNotExists(request.getName());
+
         User user = authFacade.getUser();
         Hobby hobby = hobbyFacade.getHobbyById(request.getHobbyId());
 
@@ -37,14 +40,18 @@ public class CreateClubService {
                 .hobby(hobby)
                 .managerEmail(user.getEmail())
                 .build();
-        clubFacade.checkClubNameNotExists(club.getName());
         clubRepository.save(club);
 
-        ClubMember clubMember = ClubMember.builder()
+        ClubMember clubMember = makeClubAdmin(user, club);
+
+        clubMemberRepository.save(clubMember);
+    }
+
+    private ClubMember makeClubAdmin(User user, Club club) {
+        return ClubMember.builder()
                 .user(user)
                 .club(club)
                 .role(ClubRole.ADMIN)
                 .build();
-        clubMemberRepository.save(clubMember);
     }
 }

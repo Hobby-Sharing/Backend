@@ -16,11 +16,11 @@ import java.util.List;
 @RestController
 public class ClubController {
 
-    private final JoinClubService joinClubService;
+    private final AcceptClubJoinService acceptClubJoinService;
     private final ClubListService clubListService;
-    private final ClubApplyService clubApplyService;
+    private final ApplyClubJoinService applyClubJoinService;
     private final CreateClubService createClubService;
-    private final DeleteClubApplyService deleteClubApplyService;
+    private final DeleteClubJoinApplyService deleteClubJoinApplyService;
     private final DeleteClubMemberService deleteClubMemberService;
 
     @GetMapping("/club") @PreAuthorize("isAuthenticated()")
@@ -37,19 +37,19 @@ public class ClubController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/club/join-apply/{club_id}") @PreAuthorize("isAuthenticated()")
     public void joinClubApply(@PathVariable(name = "club_id") Long clubId) {
-        clubApplyService.execute(clubId);
+        applyClubJoinService.execute(clubId);
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)
     @DeleteMapping("/club/join-apply") @PreAuthorize("isAuthenticated()")
     public void deleteClubJoinApply(@RequestBody @Valid ClubRequest request) {
-        deleteClubApplyService.execute(request);
+        deleteClubJoinApplyService.execute(request);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/club/join") @PreAuthorize("isAuthenticated()")
     public void clubJoinAccept(@RequestBody @Valid ClubRequest request) {
-        joinClubService.execute(request);
+        acceptClubJoinService.execute(request);
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)

@@ -86,7 +86,7 @@ class ClubFacadeTest extends Specification {
         customClubRepository.confirmClubAdmin(_, _) >> false
 
         when:
-        clubFacade.checkClubAdminByUserId(userId, clubId)
+        clubFacade.checkClubAdmin(userId, clubId)
 
         then:
         thrown(ClubAdminException)
