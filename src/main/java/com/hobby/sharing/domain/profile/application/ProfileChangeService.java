@@ -1,10 +1,8 @@
 package com.hobby.sharing.domain.profile.application;
 
-import com.hobby.sharing.domain.profile.dao.ProfileRepository;
 import com.hobby.sharing.domain.profile.domain.Profile;
 import com.hobby.sharing.domain.profile.dto.request.ProfileChangeRequest;
 import com.hobby.sharing.domain.user.domain.User;
-import com.hobby.sharing.domain.user.exception.UserNotFoundException;
 import com.hobby.sharing.global.security.auth.facade.AuthFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,14 +13,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProfileChangeService {
 
     private final AuthFacade authFacade;
+    private final ProfileFacade profileFacade;
 
-    private final ProfileRepository profileRepository;
 
     @Transactional
     public void execute(ProfileChangeRequest request) {
         User user = authFacade.getUser();
-        Profile profile = profileRepository.findByUser(user)
-                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
+        Profile profile = profileFacade.getProfileByUser(user);
 
         user.updateUserProfile(request.getName(), request.getZipCode(), request.getRoadNameAddress());
         profile.updateProfile(request.getProfileImageUrl(), request.getStatusMessage());

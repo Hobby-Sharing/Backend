@@ -24,6 +24,7 @@ public class HobbyController {
     private final SearchHobbyNameService searchHobbyNameService;
     private final SearchLikeHobbyService searchLikeHobbyService;
 
+
     @GetMapping("/hobby")
     public List<HobbyResponse> getHobbyList(@RequestParam("page") @Min(0) int page,
                                             @RequestParam("size") @Min(1) @Max(50) int size) {

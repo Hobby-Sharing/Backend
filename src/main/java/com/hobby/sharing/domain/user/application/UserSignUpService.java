@@ -38,15 +38,15 @@ public class UserSignUpService {
                 .build();
         userRepository.save(user);
 
-        Profile profile = Profile.builder()
+        profileRepository.save(Profile.builder()
                 .user(user)
                 .profileImageUrl(request.getProfileImageUrl())
                 .statusMessage(request.getStatusMessage())
-                .build();
-        profileRepository.save(profile);
+                .build());
 
         String accessToken = jwtTokenProvider.generateAccessToken(request.getEmail());
         String refreshToken = jwtTokenProvider.generateRefreshToken(request.getEmail());
+
         return UserTokenResponse.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)

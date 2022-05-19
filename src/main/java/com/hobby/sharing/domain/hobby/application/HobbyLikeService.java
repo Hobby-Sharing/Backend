@@ -25,11 +25,12 @@ public class HobbyLikeService {
         User user = authFacade.getUser();
         Hobby hobby = hobbyFacade.getHobbyById(request.getHobbyId());
 
+        hobbyFacade.checkLikeHobbyDuplicate(hobby.getId(), user.getId());
+
         LikeHobby likeHobby = LikeHobby.builder()
                 .hobby(hobby)
                 .user(user)
                 .build();
-        hobbyFacade.checkLikeHobbyDuplicate(hobby.getId(), user.getId());
         likeHobbyRepository.save(likeHobby);
     }
 }

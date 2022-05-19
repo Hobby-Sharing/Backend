@@ -20,11 +20,13 @@ public class HobbyUnlikeService {
 
     private final LikeHobbyRepository likeHobbyRepository;
 
+
     @Transactional
     public void execute(LikeHobbyRequest request) {
         User user = authFacade.getUser();
 
         hobbyFacade.checkLikeHobbyExists(UUID.fromString(request.getHobbyId()), user.getId());
+
         likeHobbyRepository.deleteByHobbyIdAndUserId(UUID.fromString(request.getHobbyId()), user.getId());
     }
 }

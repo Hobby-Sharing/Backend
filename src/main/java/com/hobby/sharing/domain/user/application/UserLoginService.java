@@ -22,6 +22,7 @@ public class UserLoginService {
 
         String accessToken = jwtTokenProvider.generateAccessToken(request.getEmail());
         String refreshToken = jwtTokenProvider.generateRefreshToken(request.getEmail());
+
         return UserTokenResponse.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)

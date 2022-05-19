@@ -15,6 +15,7 @@ public class SearchAllHobbyService {
 
     private final CustomHobbyRepository customHobbyRepository;
 
+
     @Transactional(readOnly = true)
     public List<HobbyResponse> execute(PagingRequest request) {
         return customHobbyRepository.getAllHobby(request);

@@ -18,6 +18,7 @@ public class ProfileController {
     private final ProfileChangeService profileChangeService;
     private final ProfileDetailsInfoService profileDetailsInfoService;
 
+
     @GetMapping("/profile") @PreAuthorize("isAuthenticated()")
     public ProfileDetailsInfoResponse getProfileDetails() {
         return profileDetailsInfoService.execute();

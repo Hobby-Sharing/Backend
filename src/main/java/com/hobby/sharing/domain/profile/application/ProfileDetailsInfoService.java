@@ -2,6 +2,7 @@ package com.hobby.sharing.domain.profile.application;
 
 import com.hobby.sharing.domain.profile.dao.CustomProfileRepository;
 import com.hobby.sharing.domain.profile.dto.response.ProfileDetailsInfoResponse;
+import com.hobby.sharing.domain.user.domain.User;
 import com.hobby.sharing.global.security.auth.facade.AuthFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
@@ -17,9 +18,10 @@ public class ProfileDetailsInfoService {
 
     private final CustomProfileRepository customProfileRepository;
 
+
     @Cacheable(value = "profile", key = "#root.target.PROFILE", cacheManager = "cacheManager")
     public ProfileDetailsInfoResponse execute() {
-        Long userId = authFacade.getUser().getId();
-        return customProfileRepository.getProfileDetailsInfo(userId);
+        User user = authFacade.getUser();
+        return customProfileRepository.getProfileDetailsInfo(user.getId());
     }
 }

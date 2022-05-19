@@ -15,6 +15,7 @@ public class SearchHobbyNameService {
 
     private final HobbyRepository hobbyRepository;
 
+
     @Transactional(readOnly = true)
     public List<HobbyResponse> execute(String keyword) {
         return hobbyRepository.findByNameContains(keyword, Sort.by(Sort.Direction.ASC, "hobbyName"))
