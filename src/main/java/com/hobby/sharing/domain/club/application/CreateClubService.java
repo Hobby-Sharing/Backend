@@ -7,16 +7,13 @@ import com.hobby.sharing.domain.club.domain.Club;
 import com.hobby.sharing.domain.club.domain.ClubMember;
 import com.hobby.sharing.domain.club.domain.role.ClubRole;
 import com.hobby.sharing.domain.club.dto.request.CreateClubRequest;
-import com.hobby.sharing.domain.hobby.dao.HobbyRepository;
+import com.hobby.sharing.domain.hobby.application.facade.HobbyFacade;
 import com.hobby.sharing.domain.hobby.domain.Hobby;
-import com.hobby.sharing.domain.hobby.exception.HobbyNotFoundException;
 import com.hobby.sharing.domain.user.domain.User;
 import com.hobby.sharing.global.security.auth.facade.AuthFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
-
-import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
@@ -24,16 +21,15 @@ public class CreateClubService {
 
     private final AuthFacade authFacade;
     private final ClubFacade clubFacade;
+    private final HobbyFacade hobbyFacade;
 
     private final ClubRepository clubRepository;
-    private final HobbyRepository hobbyRepository;
     private final ClubMemberRepository clubMemberRepository;
 
     @CacheEvict(value = "club", allEntries = true)
     public void execute(CreateClubRequest request) {
         User user = authFacade.getUser();
-        Hobby hobby = hobbyRepository.findById(UUID.fromString(request.getHobbyId()))
-                .orElseThrow(() -> HobbyNotFoundException.EXCEPTION);
+        Hobby hobby = hobbyFacade.getHobbyById(request.getHobbyId());
 
         Club club = Club.builder()
                 .name(request.getName())

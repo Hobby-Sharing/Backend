@@ -5,7 +5,6 @@ import com.hobby.sharing.domain.club.dao.ClubApplyRepository;
 import com.hobby.sharing.domain.club.dao.ClubRepository;
 import com.hobby.sharing.domain.club.domain.Club;
 import com.hobby.sharing.domain.club.domain.ClubApply;
-import com.hobby.sharing.domain.club.exception.ClubNotFoundException;
 import com.hobby.sharing.domain.user.domain.User;
 import com.hobby.sharing.global.security.auth.facade.AuthFacade;
 import lombok.RequiredArgsConstructor;
@@ -23,8 +22,7 @@ public class ClubApplyService {
 
     public void execute(Long clubId) {
         User user = authFacade.getUser();
-        Club club = clubRepository.findById(clubId)
-                .orElseThrow(() -> ClubNotFoundException.EXCEPTION);
+        Club club = clubFacade.getClubById(clubId);
 
         clubFacade.checkClubMemberNotExists(user.getId(), clubId);
         clubFacade.checkClubApplyNotExists(user.getId(), clubId);

@@ -3,6 +3,7 @@ package com.hobby.sharing.domain.club.application.facade;
 import com.hobby.sharing.domain.club.dao.ClubMemberRepository;
 import com.hobby.sharing.domain.club.dao.ClubRepository;
 import com.hobby.sharing.domain.club.dao.CustomClubRepository;
+import com.hobby.sharing.domain.club.domain.Club;
 import com.hobby.sharing.domain.club.domain.embed.ClubEmbed;
 import com.hobby.sharing.domain.club.exception.*;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,12 @@ public class ClubFacade {
     private final ClubRepository clubRepository;
     private final CustomClubRepository customClubRepository;
     private final ClubMemberRepository clubMemberRepository;
+
+
+    public Club getClubById(Long clubId) {
+        return clubRepository.findById(clubId)
+                .orElseThrow(() -> ClubNotFoundException.EXCEPTION);
+    }
 
     public void checkClubNameNotExists(String clubName) {
         if (clubRepository.existsByName(clubName)) {
