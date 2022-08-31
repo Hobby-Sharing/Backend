@@ -4,6 +4,7 @@ import com.hobby.sharing.global.security.auth.AuthDetailsService;
 import com.hobby.sharing.global.security.exception.ExpiredTokenException;
 import com.hobby.sharing.global.security.exception.InvalidTokenException;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -62,7 +63,7 @@ public class JwtTokenProvider {
                     .setSigningKey(jwtProperties.getSecretKey())
                     .build()
                         .parseClaimsJws(token).getBody();
-        } catch (ExpiredTokenException e) {
+        } catch (ExpiredJwtException e) {
             throw ExpiredTokenException.EXCEPTION;
         } catch (Exception e) {
             throw InvalidTokenException.EXCEPTION;
